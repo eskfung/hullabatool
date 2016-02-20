@@ -3,4 +3,14 @@ extends ../layout
 block content
   h1= title
   #canvas
-  script(src='javascripts/mastermind/mastermind.js')
+  script(type='text/javascript').
+    require([
+      'react',
+      'react-dom',
+      'mastermind/mastermind'
+    ], function(React, ReactDOM, Mastermind) {
+      ReactDOM.render(
+        React.createElement(Mastermind, null),
+        document.getElementById('canvas')
+      );
+    });

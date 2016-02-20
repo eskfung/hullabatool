@@ -1,9 +1,19 @@
-require([
+define([
   'react',
-  'react-dom'
-], function(React, ReactDOM) {
-  ReactDOM.render(
-    <h1>Hello, world!</h1>,
-    document.getElementById('canvas')
-  );
+  'mastermind/row'
+], function(React, Row) {
+  var Mastermind = React.createClass({
+    render: function () {
+      return (
+        <div>
+          <h1>Hello, world!</h1>
+          <table>
+            <Row />
+          </table>
+        </div>
+      );
+    }
+  });
+
+  return Mastermind;
 });
