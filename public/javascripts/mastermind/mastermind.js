@@ -1,8 +1,9 @@
-define(['react', 'mastermind/row'], function (React, Row) {
+define(['react', 'mastermind/row', 'mastermind/row_answer'], function (React, Row, RowAnswer) {
   var Mastermind = React.createClass({
     displayName: 'Mastermind',
 
     render: function () {
+      var ANSWERS = ['red', 'red', 'blue', 'white', 'black', undefined];
       return React.createElement(
         'div',
         null,
@@ -15,7 +16,8 @@ define(['react', 'mastermind/row'], function (React, Row) {
           'table',
           null,
           React.createElement(Row, null)
-        )
+        ),
+        React.createElement(RowAnswer, { answers: ANSWERS })
       );
     }
   });
