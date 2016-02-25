@@ -5,8 +5,8 @@ define([
   var RowAnswer = React.createClass({
     render: function () {
       var answers = [];
-      this.props.answers.forEach(function(answer) {
-        answers.push(<Peg color={answer} />);
+      this.props.answers.forEach(function(answer, index) {
+        answers.push(<Peg key={index} color={answer} />);
       });
       return (
         <div>

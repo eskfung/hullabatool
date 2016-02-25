@@ -4,8 +4,10 @@ define(['react', 'mastermind/peg'], function (React, Peg) {
 
     render: function () {
       var answers = [];
-      this.props.answers.forEach(function (answer) {
-        answers.push(React.createElement(Peg, { color: answer }));
+      this.props.answers.forEach(function (answer, index) {
+        console.log(answer);
+        console.log(index);
+        answers.push(React.createElement(Peg, { key: index, color: answer }));
       });
       return React.createElement(
         'div',
