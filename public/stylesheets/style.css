@@ -7,18 +7,66 @@ a {
   color: #00B7FF;
 }
 
-.peg {
-  width: 30px;
-  height: 30px;
+.guess-group,
+.peg-group {
   display: inline-block;
-  border-radius: 15px;
+  border: 1px solid black;
+}
+
+.guess,
+.peg {
+  display: inline-block;
   border-color: #999;
   border-style: solid;
   border-width: 1px;
 }
 
-.peg-blue {
+.guess {
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+.peg {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+}
+
+.guess-red {
+  background-color: red;
+}
+
+.guess-green {
+  background-color: green;
+}
+
+.guess-blue {
   background-color: blue;
+}
+
+.guess-yellow {
+  background-color: yellow;
+}
+
+.guess-brown {
+  background-color: brown;
+}
+
+.guess-orange {
+  background-color: orange;
+}
+
+.guess-black {
+  background-color: black;
+}
+
+.guess-white {
+  background-color: white;
+}
+
+.guess-blank {
+  background-color: grey;
 }
 
 .peg-white {
@@ -27,10 +75,6 @@ a {
 
 .peg-black {
   background-color: black;
-}
-
-.peg-red {
-  background-color: red;
 }
 
 .peg-blank {
