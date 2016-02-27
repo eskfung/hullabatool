@@ -1,15 +1,26 @@
 define([
-  'react'
-], function(React) {
+  'react',
+  'mastermind/guess',
+  'mastermind/peg'
+], function(React, Guess, Peg) {
   var Row = React.createClass({
     render: function () {
+      var guesses = [],
+          pegs = [];
+      for (var i = 0; i < this.props.codeLength; i++) {
+        guesses.push(<Guess />);
+        pegs.push(<Peg />)
+      }
+
       return (
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-        </tr>
+        <div className='row' title={'Row ' + this.props.reactKey}>
+          <div className='guess-group'>
+            {guesses}
+          </div>
+          <div className='peg-group'>
+            {pegs}
+          </div>
+        </div>
       );
     }
   });
