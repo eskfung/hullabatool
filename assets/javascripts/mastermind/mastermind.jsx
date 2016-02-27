@@ -5,14 +5,24 @@ define([
 ], function(React, Row, RowAnswer) {
   var Mastermind = React.createClass({
     render: function () {
-      var ANSWERS=['red','red','blue', 'white', 'black', undefined];
+      var GUESS_COUNT = 10;
+      var COLORS = ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'];
+      var CODE_LENGTH = 4;
+
+      var rows = [];
+      for (var i = 0; i < GUESS_COUNT; i++) {
+        rows.push(
+          <Row key={i}
+            reactKey={GUESS_COUNT - i}
+            codeLength={CODE_LENGTH}
+            colors={COLORS}
+          />
+        );
+      }
+
       return (
         <div>
-          <h1>Hello, world!</h1>
-          <table>
-            <Row />
-          </table>
-          <RowAnswer answers={ANSWERS} />
+          {rows}
         </div>
       );
     }

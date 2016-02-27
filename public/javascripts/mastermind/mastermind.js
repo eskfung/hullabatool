@@ -3,21 +3,23 @@ define(['react', 'mastermind/row', 'mastermind/row_answer'], function (React, Ro
     displayName: 'Mastermind',
 
     render: function () {
-      var ANSWERS = ['red', 'red', 'blue', 'white', 'black', undefined];
+      var GUESS_COUNT = 10;
+      var COLORS = ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'];
+      var CODE_LENGTH = 4;
+
+      var rows = [];
+      for (var i = 0; i < GUESS_COUNT; i++) {
+        rows.push(React.createElement(Row, { key: i,
+          reactKey: GUESS_COUNT - i,
+          codeLength: CODE_LENGTH,
+          colors: COLORS
+        }));
+      }
+
       return React.createElement(
         'div',
         null,
-        React.createElement(
-          'h1',
-          null,
-          'Hello, world!'
-        ),
-        React.createElement(
-          'table',
-          null,
-          React.createElement(Row, null)
-        ),
-        React.createElement(RowAnswer, { answers: ANSWERS })
+        rows
       );
     }
   });
