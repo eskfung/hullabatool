@@ -1,4 +1,4 @@
-define(['react', 'mastermind/row', 'mastermind/row_answer'], function (React, Row, RowAnswer) {
+define(['react', 'mastermind/row'], function (React, Row) {
   var Mastermind = React.createClass({
     displayName: 'Mastermind',
 

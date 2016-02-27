@@ -1,8 +1,7 @@
 define([
   'react',
-  'mastermind/row',
-  'mastermind/row_answer'
-], function(React, Row, RowAnswer) {
+  'mastermind/row'
+], function(React, Row) {
   var Mastermind = React.createClass({
     render: function () {
       var GUESS_COUNT = 10;
