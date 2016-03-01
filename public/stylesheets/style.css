@@ -7,6 +7,10 @@ a {
   color: #00B7FF;
 }
 
+.hidden {
+  display: none;
+}
+
 .guess-group,
 .peg-group {
   display: inline-block;
