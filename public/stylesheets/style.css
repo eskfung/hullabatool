@@ -84,3 +84,7 @@ a {
 .peg-blank {
   background-color: grey;
 }
+
+.guess.guess-unsolved {
+  background-color: #abc;
+}

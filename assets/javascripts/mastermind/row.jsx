@@ -17,7 +17,7 @@ define([
           rowClasses = classnames({
             'row': true,
             'current-row': this.props.currentRow
-          })
+          });
           buttonClasses = classnames({
             'btn': true,
             'hidden': !this.state.readyToGuess

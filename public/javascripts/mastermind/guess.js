@@ -3,10 +3,17 @@ define(['react', 'classnames'], function (React, classnames) {
     displayName: 'Guess',
 
     render: function () {
-      var color = this.props.color ? this.props.color : 'blank';
-      var classes = classnames('guess', 'guess-' + color);
+      var classes = {
+        'guess': true,
+        'guess-unsolved': this.props.unsolved
+      };
 
-      return React.createElement('div', { className: classes });
+      if (!this.props.unsolved) {
+        var color = this.props.color ? this.props.color : 'blank';
+        classes['guess-' + color] = true;
+      }
+
+      return React.createElement('div', { className: classnames(classes) });
     }
   });
 

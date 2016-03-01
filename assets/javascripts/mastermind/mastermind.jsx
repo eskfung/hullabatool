@@ -1,15 +1,22 @@
 define([
   'react',
-  'mastermind/row'
-], function(React, Row) {
+  'mastermind/row',
+  'mastermind/answer_row'
+], function(React, Row, AnswerRow) {
   var Mastermind = React.createClass({
     getInitialState: function () {
       return {
         guessCount: 10,
         colors: ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'],
         codeLength: 4,
-        currentRow: 1
+        currentRow: 1,
+        unsolved: true
       };
+    },
+
+    generateRandomAnswer: function () {
+      // pick codeLength times from this.state.colors randomly and return
+      return ['red', 'green', 'blue', 'yellow'];
     },
 
     render: function () {
@@ -28,6 +35,7 @@ define([
 
       return (
         <div>
+          <AnswerRow answer={this.generateRandomAnswer()} unsolved={this.state.unsolved} />
           {rows}
         </div>
       );
