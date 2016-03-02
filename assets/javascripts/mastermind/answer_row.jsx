@@ -1,8 +1,8 @@
 define([
   'react',
   'classnames',
-  'mastermind/guess'
-], function(React, classnames, Guess) {
+  'mastermind/answer_peg'
+], function(React, classnames, AnswerPeg) {
   var AnswerRow = React.createClass({
     render: function () {
       var answer = [],
@@ -12,14 +12,12 @@ define([
           });
 
       for (var i = 0; i < this.props.answer.length; i++) {
-        answer.push(<Guess key={i} color={this.props.answer[i]} unsolved={this.props.unsolved} />);
+        answer.push(<AnswerPeg key={i} color={this.props.answer[i]} unsolved={this.props.unsolved} />);
       }
 
       return (
         <div className={rowClasses} title={'Answer Row'}>
-          <div className='guess-group'>
-            {answer}
-          </div>
+          {answer}
         </div>
       );
     }

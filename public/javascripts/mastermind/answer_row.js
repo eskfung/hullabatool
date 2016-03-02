@@ -1,4 +1,4 @@
-define(['react', 'classnames', 'mastermind/guess'], function (React, classnames, Guess) {
+define(['react', 'classnames', 'mastermind/answer_peg'], function (React, classnames, AnswerPeg) {
   var AnswerRow = React.createClass({
     displayName: 'AnswerRow',
 
@@ -10,17 +10,13 @@ define(['react', 'classnames', 'mastermind/guess'], function (React, classnames,
       });
 
       for (var i = 0; i < this.props.answer.length; i++) {
-        answer.push(React.createElement(Guess, { key: i, color: this.props.answer[i], unsolved: this.props.unsolved }));
+        answer.push(React.createElement(AnswerPeg, { key: i, color: this.props.answer[i], unsolved: this.props.unsolved }));
       }
 
       return React.createElement(
         'div',
         { className: rowClasses, title: 'Answer Row' },
-        React.createElement(
-          'div',
-          { className: 'guess-group' },
-          answer
-        )
+        answer
       );
     }
   });
