@@ -1,19 +1,34 @@
-define(['react', 'classnames'], function (React, classnames) {
+define(['react', 'classnames', 'mastermind/colored_peg'], function (React, classnames, ColoredPeg) {
   var Guess = React.createClass({
     displayName: 'Guess',
 
-    render: function () {
-      var classes = {
-        'guess': true,
-        'guess-unsolved': this.props.unsolved
-      };
+    _onClick: function () {
+      this.setState({ color: this._nextColor() });
+    },
 
-      if (!this.props.unsolved) {
-        var color = this.props.color ? this.props.color : 'blank';
-        classes['guess-' + color] = true;
+    _classes: function () {
+      return 'colored-peg--' + this.state.color;
+    },
+
+    _nextColor: function () {
+      var index = this.props.colorChoices.indexOf(this.state.color);
+      index++;
+
+      if (index == this.props.colorChoices.length) {
+        index = 0;
       }
 
-      return React.createElement('div', { className: classnames(classes) });
+      return this.props.colorChoices[index];
+    },
+
+    getInitialState: function () {
+      return {
+        color: 'blank'
+      };
+    },
+
+    render: function () {
+      return React.createElement(ColoredPeg, { classes: this._classes(), onClick: this._onClick });
     }
   });
 

@@ -7,7 +7,7 @@ define([
     getInitialState: function () {
       return {
         guessCount: 10,
-        colors: ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'],
+        colorChoices: ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'],
         codeLength: 4,
         currentRow: 1,
         unsolved: true
@@ -28,7 +28,7 @@ define([
             reactKey={rowCount}
             currentRow={rowCount == this.state.currentRow}
             codeLength={this.state.codeLength}
-            colors={this.state.colors}
+            colorChoices={this.state.colorChoices}
           />
         );
       }

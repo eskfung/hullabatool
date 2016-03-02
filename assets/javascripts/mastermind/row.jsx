@@ -24,7 +24,7 @@ define([
           });
 
       for (var i = 0; i < this.props.codeLength; i++) {
-        guesses.push(<Guess key={i} />);
+        guesses.push(<Guess key={i} colorChoices={this.props.colorChoices} />);
         pegs.push(<Peg key={i} />)
       }
 
