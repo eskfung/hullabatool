@@ -6,7 +6,9 @@ define([
   var Guess = React.createClass({
     _onClick: function () {
       if (this.props.isActive) {
-        this.setState({ color: this._nextColor()});
+        var nextColor = this._nextColor();
+        this.setState({ color: nextColor});
+        this.props.onClick(this.props.reactKey, nextColor);
       }
     },
 

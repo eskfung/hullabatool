@@ -1,14 +1,41 @@
 define([
+  'underscore',
   'react',
   'classnames',
   'mastermind/guess',
   'mastermind/peg'
-], function(React, classnames, Guess, Peg) {
+], function(_, React, classnames, Guess, Peg) {
   var Row = React.createClass({
     getInitialState: function() {
       return {
-        readyToGuess: false
+        guesses: {}
       }
+    },
+
+    _guessListener: function(guessIndex, color) {
+      var prevGuesses = this.state.guesses;
+      prevGuesses[guessIndex] = color;
+      this.setState({guesses: prevGuesses});
+    },
+
+    _handleSubmit: function() {
+      // read guess values
+      // compare to answer
+      // render pegs
+      // notify mastermind listener to advance row by 1
+    },
+
+    _renderSubmitButton: function() {
+      var buttonClasses = classnames({
+        'btn': true,
+        'hidden': !this.props.currentRow || (_.keys(this.state.guesses).length != this.props.codeLength)
+      });
+
+      return (
+        <button className={buttonClasses} onClick={this._handleSubmit}>
+          Submit
+        </button>
+      );
     },
 
     render: function () {
@@ -18,16 +45,14 @@ define([
             'row': true,
             'current-row': this.props.currentRow
           });
-          buttonClasses = classnames({
-            'btn': true,
-            'hidden': !this.state.readyToGuess
-          });
 
       for (var i = 0; i < this.props.codeLength; i++) {
         guesses.push(
           <Guess key={i}
+            reactKey={i}
             colorChoices={this.props.colorChoices}
             isActive={this.props.currentRow}
+            onClick={this._guessListener}
           />
         );
         pegs.push(<Peg key={i} />)
@@ -41,7 +66,7 @@ define([
           <div className='guess-group'>
             {guesses}
           </div>
-          <button className={buttonClasses}>Submit?</button>
+          {this._renderSubmitButton()}
         </div>
       );
     }
