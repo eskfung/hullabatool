@@ -1,4 +1,4 @@
-define(['react', 'mastermind/row', 'mastermind/answer_row'], function (React, Row, AnswerRow) {
+define(['underscore', 'react', 'mastermind/row', 'mastermind/answer_row'], function (_, React, Row, AnswerRow) {
   var Mastermind = React.createClass({
     displayName: 'Mastermind',
 
@@ -13,8 +13,7 @@ define(['react', 'mastermind/row', 'mastermind/answer_row'], function (React, Ro
     },
 
     generateRandomAnswer: function () {
-      // pick codeLength times from this.state.colors randomly and return
-      return ['red', 'green', 'blue', 'yellow'];
+      return _.sample(this.state.colorChoices, this.state.codeLength);
     },
 
     render: function () {
@@ -33,7 +32,12 @@ define(['react', 'mastermind/row', 'mastermind/answer_row'], function (React, Ro
         'div',
         null,
         React.createElement(AnswerRow, { answer: this.generateRandomAnswer(), unsolved: this.state.unsolved }),
-        rows
+        rows,
+        React.createElement(
+          'pre',
+          { className: 'debugger' },
+          JSON.stringify(this.state)
+        )
       );
     }
   });
