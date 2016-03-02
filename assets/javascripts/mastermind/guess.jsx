@@ -5,7 +5,9 @@ define([
 ], function(React, classnames, ColoredPeg) {
   var Guess = React.createClass({
     _onClick: function () {
-      this.setState({ color: this._nextColor()});
+      if (this.props.isActive) {
+        this.setState({ color: this._nextColor()});
+      }
     },
 
     _classes: function () {

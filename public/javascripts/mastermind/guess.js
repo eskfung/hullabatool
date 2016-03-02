@@ -3,7 +3,9 @@ define(['react', 'classnames', 'mastermind/colored_peg'], function (React, class
     displayName: 'Guess',
 
     _onClick: function () {
-      this.setState({ color: this._nextColor() });
+      if (this.props.isActive) {
+        this.setState({ color: this._nextColor() });
+      }
     },
 
     _classes: function () {

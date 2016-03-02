@@ -21,7 +21,10 @@ define(['react', 'classnames', 'mastermind/guess', 'mastermind/peg'], function (
       });
 
       for (var i = 0; i < this.props.codeLength; i++) {
-        guesses.push(React.createElement(Guess, { key: i, colorChoices: this.props.colorChoices }));
+        guesses.push(React.createElement(Guess, { key: i,
+          colorChoices: this.props.colorChoices,
+          isActive: this.props.currentRow
+        }));
         pegs.push(React.createElement(Peg, { key: i }));
       }
 

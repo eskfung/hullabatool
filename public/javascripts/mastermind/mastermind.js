@@ -12,6 +12,10 @@ define(['underscore', 'react', 'mastermind/row', 'mastermind/answer_row'], funct
       };
     },
 
+    componentWillMount: function () {
+      this.setState({ answer: this.generateRandomAnswer() });
+    },
+
     generateRandomAnswer: function () {
       return _.sample(this.state.colorChoices, this.state.codeLength);
     },
@@ -24,14 +28,15 @@ define(['underscore', 'react', 'mastermind/row', 'mastermind/answer_row'], funct
           reactKey: rowCount,
           currentRow: rowCount == this.state.currentRow,
           codeLength: this.state.codeLength,
-          colorChoices: this.state.colorChoices
+          colorChoices: this.state.colorChoices,
+          answer: this.state.answer
         }));
       }
 
       return React.createElement(
         'div',
         null,
-        React.createElement(AnswerRow, { answer: this.generateRandomAnswer(), unsolved: this.state.unsolved }),
+        React.createElement(AnswerRow, { answer: this.state.answer, unsolved: this.state.unsolved }),
         rows,
         React.createElement(
           'pre',

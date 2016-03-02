@@ -15,6 +15,10 @@ define([
       };
     },
 
+    componentWillMount: function () {
+      this.setState({answer: this.generateRandomAnswer()});
+    },
+
     generateRandomAnswer: function () {
       return _.sample(this.state.colorChoices, this.state.codeLength);
     },
@@ -29,13 +33,14 @@ define([
             currentRow={rowCount == this.state.currentRow}
             codeLength={this.state.codeLength}
             colorChoices={this.state.colorChoices}
+            answer={this.state.answer}
           />
         );
       }
 
       return (
         <div>
-          <AnswerRow answer={this.generateRandomAnswer()} unsolved={this.state.unsolved} />
+          <AnswerRow answer={this.state.answer} unsolved={this.state.unsolved} />
           {rows}
           <pre className='debugger'>
             {JSON.stringify(this.state)}
