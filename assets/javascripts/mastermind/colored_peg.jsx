@@ -4,6 +4,7 @@ define([
 ], function(React, classnames) {
   var ColoredPeg = React.createClass({
     propTypes: {
+      classes: React.PropTypes.object,
       onClick: React.PropTypes.func
     },
 

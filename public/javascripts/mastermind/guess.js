@@ -2,6 +2,13 @@ define(['react', 'classnames', 'mastermind/colored_peg'], function (React, class
   var Guess = React.createClass({
     displayName: 'Guess',
 
+    propTypes: {
+      colorChoices: React.PropTypes.arrayOf(React.PropTypes.string),
+      isActive: React.PropTypes.bool,
+      onClick: React.PropTypes.func,
+      reactKey: React.PropTypes.number
+    },
+
     _onClick: function () {
       if (this.props.isActive) {
         var nextColor = this._nextColor();
@@ -11,7 +18,9 @@ define(['react', 'classnames', 'mastermind/colored_peg'], function (React, class
     },
 
     _classes: function () {
-      return 'colored-peg--' + this.state.color;
+      var classes = {};
+      classes['colored-peg--' + this.state.color] = true;
+      return classes;
     },
 
     _nextColor: function () {

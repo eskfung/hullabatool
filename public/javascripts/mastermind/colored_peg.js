@@ -3,6 +3,7 @@ define(['react', 'classnames'], function (React, classnames) {
     displayName: 'ColoredPeg',
 
     propTypes: {
+      classes: React.PropTypes.object,
       onClick: React.PropTypes.func
     },
 

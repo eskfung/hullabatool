@@ -6,6 +6,13 @@ define([
   'mastermind/peg'
 ], function(_, React, classnames, Guess, Peg) {
   var Row = React.createClass({
+    propTypes: {
+      codeLength: React.PropTypes.number,
+      colorChoices: React.PropTypes.arrayOf(React.PropTypes.string),
+      currentRow: React.PropTypes.bool,
+      reactKey: React.PropTypes.number
+    },
+
     getInitialState: function() {
       return {
         guesses: {}

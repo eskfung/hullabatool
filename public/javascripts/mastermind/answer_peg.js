@@ -2,6 +2,11 @@ define(['react', 'classnames', 'mastermind/colored_peg'], function (React, class
   var AnswerPeg = React.createClass({
     displayName: 'AnswerPeg',
 
+    propTypes: {
+      color: React.PropTypes.string,
+      unsolved: React.PropTypes.bool
+    },
+
     _classes: function () {
       var classes = {
         'unsolved': this.props.unsolved

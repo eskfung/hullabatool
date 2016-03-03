@@ -2,6 +2,13 @@ define(['underscore', 'react', 'classnames', 'mastermind/guess', 'mastermind/peg
   var Row = React.createClass({
     displayName: 'Row',
 
+    propTypes: {
+      codeLength: React.PropTypes.number,
+      colorChoices: React.PropTypes.arrayOf(React.PropTypes.string),
+      currentRow: React.PropTypes.bool,
+      reactKey: React.PropTypes.number
+    },
+
     getInitialState: function () {
       return {
         guesses: {}

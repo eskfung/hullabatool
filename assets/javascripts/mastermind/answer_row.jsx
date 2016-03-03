@@ -4,6 +4,11 @@ define([
   'mastermind/answer_peg'
 ], function(React, classnames, AnswerPeg) {
   var AnswerRow = React.createClass({
+    propTypes: {
+      answer: React.PropTypes.arrayOf(React.PropTypes.string),
+      unsolved: React.PropTypes.bool  
+    },
+
     render: function () {
       var answer = [],
           rowClasses = classnames({
