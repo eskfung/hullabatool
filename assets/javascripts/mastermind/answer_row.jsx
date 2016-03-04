@@ -6,7 +6,7 @@ define([
   var AnswerRow = React.createClass({
     propTypes: {
       answer: React.PropTypes.arrayOf(React.PropTypes.string),
-      unsolved: React.PropTypes.bool  
+      gameOver: React.PropTypes.bool
     },
 
     render: function () {
@@ -17,7 +17,7 @@ define([
           });
 
       for (var i = 0; i < this.props.answer.length; i++) {
-        answer.push(<AnswerPeg key={i} color={this.props.answer[i]} unsolved={this.props.unsolved} />);
+        answer.push(<AnswerPeg key={i} color={this.props.answer[i]} gameOver={this.props.gameOver} />);
       }
 
       return (

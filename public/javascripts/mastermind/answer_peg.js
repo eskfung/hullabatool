@@ -4,15 +4,15 @@ define(['react', 'classnames', 'mastermind/colored_peg'], function (React, class
 
     propTypes: {
       color: React.PropTypes.string,
-      unsolved: React.PropTypes.bool
+      gameOver: React.PropTypes.bool
     },
 
     _classes: function () {
       var classes = {
-        'unsolved': this.props.unsolved
+        'unsolved': !this.props.gameOver
       };
 
-      if (!this.props.unsolved) {
+      if (this.props.gameOver) {
         classes['colored-peg--' + this.props.color] = true;
       }
 

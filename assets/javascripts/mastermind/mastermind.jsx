@@ -11,7 +11,8 @@ define([
         colorChoices: ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'],
         codeLength: 4,
         currentRow: 1,
-        unsolved: true
+        gameOver: false,
+        won: false
       };
     },
 
@@ -24,10 +25,31 @@ define([
     },
 
     resolveTurn: function (gameWon) {
-      if (gameWon || this.state.currentRow >= this.state.guessCount) {
-        this.setState({unsolved: false, currentRow: this.state.guessCount + 1});
+      if (gameWon) {
+        this.setState({won: true, gameOver: true});
       }
-      this.setState({currentRow: ++this.state.currentRow});
+
+      if (this.state.currentRow >= this.state.guessCount) {
+        this.setState({gameOver: true});
+      }
+
+      this.setState({currentRow: this.state.currentRow + 1});
+    },
+
+    renderEndgameMessage: function () {
+      var message;
+      if (this.state.gameOver) {
+        if (this.state.won) {
+          message = "You won!";
+        } else {
+          message = "Sorry, you lost!";
+        }
+      }
+      return(
+        <p>
+          {message}
+        </p>
+      )
     },
 
     render: function () {
@@ -37,7 +59,7 @@ define([
         rows.push(
           <Row key={i}
             reactKey={rowCount}
-            currentRow={rowCount == this.state.currentRow}
+            currentRow={!this.state.gameOver && rowCount == this.state.currentRow}
             codeLength={this.state.codeLength}
             colorChoices={this.state.colorChoices}
             answer={this.state.answer}
@@ -48,7 +70,8 @@ define([
 
       return (
         <div>
-          <AnswerRow answer={this.state.answer} unsolved={this.state.unsolved} />
+          {this.renderEndgameMessage()}
+          <AnswerRow answer={this.state.answer} gameOver={this.state.gameOver} />
           {rows}
           <pre className='debugger'>
             {JSON.stringify(this.state)}

@@ -4,7 +4,7 @@ define(['react', 'classnames', 'mastermind/answer_peg'], function (React, classn
 
     propTypes: {
       answer: React.PropTypes.arrayOf(React.PropTypes.string),
-      unsolved: React.PropTypes.bool
+      gameOver: React.PropTypes.bool
     },
 
     render: function () {
@@ -15,7 +15,7 @@ define(['react', 'classnames', 'mastermind/answer_peg'], function (React, classn
       });
 
       for (var i = 0; i < this.props.answer.length; i++) {
-        answer.push(React.createElement(AnswerPeg, { key: i, color: this.props.answer[i], unsolved: this.props.unsolved }));
+        answer.push(React.createElement(AnswerPeg, { key: i, color: this.props.answer[i], gameOver: this.props.gameOver }));
       }
 
       return React.createElement(

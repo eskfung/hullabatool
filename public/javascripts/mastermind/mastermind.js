@@ -8,7 +8,8 @@ define(['underscore', 'react', 'mastermind/row', 'mastermind/answer_row'], funct
         colorChoices: ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'],
         codeLength: 4,
         currentRow: 1,
-        unsolved: true
+        gameOver: false,
+        won: false
       };
     },
 
@@ -21,10 +22,31 @@ define(['underscore', 'react', 'mastermind/row', 'mastermind/answer_row'], funct
     },
 
     resolveTurn: function (gameWon) {
-      if (gameWon || this.state.currentRow >= this.state.guessCount) {
-        this.setState({ unsolved: false, currentRow: this.state.guessCount + 1 });
+      if (gameWon) {
+        this.setState({ won: true, gameOver: true });
       }
-      this.setState({ currentRow: ++this.state.currentRow });
+
+      if (this.state.currentRow >= this.state.guessCount) {
+        this.setState({ gameOver: true });
+      }
+
+      this.setState({ currentRow: this.state.currentRow + 1 });
+    },
+
+    renderEndgameMessage: function () {
+      var message;
+      if (this.state.gameOver) {
+        if (this.state.won) {
+          message = "You won!";
+        } else {
+          message = "Sorry, you lost!";
+        }
+      }
+      return React.createElement(
+        'p',
+        null,
+        message
+      );
     },
 
     render: function () {
@@ -33,7 +55,7 @@ define(['underscore', 'react', 'mastermind/row', 'mastermind/answer_row'], funct
         var rowCount = this.state.guessCount - i;
         rows.push(React.createElement(Row, { key: i,
           reactKey: rowCount,
-          currentRow: rowCount == this.state.currentRow,
+          currentRow: !this.state.gameOver && rowCount == this.state.currentRow,
           codeLength: this.state.codeLength,
           colorChoices: this.state.colorChoices,
           answer: this.state.answer,
@@ -44,7 +66,8 @@ define(['underscore', 'react', 'mastermind/row', 'mastermind/answer_row'], funct
       return React.createElement(
         'div',
         null,
-        React.createElement(AnswerRow, { answer: this.state.answer, unsolved: this.state.unsolved }),
+        this.renderEndgameMessage(),
+        React.createElement(AnswerRow, { answer: this.state.answer, gameOver: this.state.gameOver }),
         rows,
         React.createElement(
           'pre',
