@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "prestart": "babel --presets react assets --out-dir public",
     "test": "mocha"
   },
   "dependencies": {
