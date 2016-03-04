@@ -18,7 +18,10 @@ define([
     getInitialState: function() {
       return {
         guesses: {},
-        hintPegs: []
+        hintPegs: {
+          black: 0,
+          white: 0
+        }
       }
     },
 
@@ -29,22 +32,71 @@ define([
     },
 
     _handleSubmit: function() {
-      // read guess values
-      // compare to answer
-      // render pegs
-      this.props.resolveTurn(this.isGuessCorrect());
+      var hintPegs = this.getHintPegs();
+      this.setState({
+        hintPegs: hintPegs
+      });
+      this.props.resolveTurn(this.isGuessCorrect(hintPegs));
     },
 
-    isGuessCorrect: function() {
-
+    isGuessCorrect: function(hintPegs) {
+      return hintPegs.black == this.props.codeLength;
     },
 
     getHintPegs: function() {
+      // Convert answer array into object
+      var answerObj = _.reduce(this.props.answer, function(obj, value, index) {
+        obj[index] = value;
+        return obj;
+      }, {});
 
+      // Get the black pegs
+      var answerRemainder = _.omit(answerObj, function(value, key, object) {
+        return this.state.guesses[key] == value;
+      }.bind(this));
+
+      var guessRemainder = _.omit(this.state.guesses, function(value, key, object) {
+        return answerObj[key] == value;
+      }.bind(this));
+
+      var blackPegs = this.props.answer.length - _.values(answerRemainder).length;
+
+      // Get the white pegs
+      var whitePegs = 0;
+      _.each(guessRemainder, function(guess) {
+        var foundColorIndex = _.findKey(answerRemainder, function(answer) {
+          return answer == guess;
+        });
+
+        if (foundColorIndex) {
+          answerRemainder = _.omit(answerRemainder, foundColorIndex);
+          whitePegs++;
+        }
+      });
+
+      return {
+        black: blackPegs,
+        white: whitePegs
+      }
     },
 
     _renderHintPegs: function () {
+      var pegs = [];
+      var remainder = this.props.codeLength - (this.state.hintPegs.black + this.state.hintPegs.white);
 
+      _.times(this.state.hintPegs.black, function(n) {
+        pegs.push(<Peg key={'black-' + n} color='black' />)
+      })
+
+      _.times(this.state.hintPegs.white, function(n) {
+        pegs.push(<Peg key={'white-' + n} color='white' />)
+      })
+
+      _.times(remainder, function(n) {
+        pegs.push(<Peg key={'blank-' + n} />)
+      })
+
+      return pegs;
     },
 
     _renderSubmitButton: function() {
@@ -62,7 +114,6 @@ define([
 
     render: function () {
       var guesses = [],
-          pegs = [],
           rowClasses = classnames({
             'row': true,
             'current-row': this.props.currentRow
@@ -77,13 +128,12 @@ define([
             onClick={this._guessListener}
           />
         );
-        pegs.push(<Peg key={i} />)
       }
 
       return (
         <div className={rowClasses} title={'Row ' + this.props.reactKey}>
           <div className='peg-group'>
-            {pegs}
+            {this._renderHintPegs()}
           </div>
           <div className='guess-group'>
             {guesses}
