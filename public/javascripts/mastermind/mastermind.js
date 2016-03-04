@@ -20,6 +20,13 @@ define(['underscore', 'react', 'mastermind/row', 'mastermind/answer_row'], funct
       return _.sample(this.state.colorChoices, this.state.codeLength);
     },
 
+    resolveTurn: function (gameWon) {
+      if (gameWon || this.state.currentRow >= this.state.guessCount) {
+        this.setState({ unsolved: false, currentRow: this.state.guessCount + 1 });
+      }
+      this.setState({ currentRow: ++this.state.currentRow });
+    },
+
     render: function () {
       var rows = [];
       for (var i = 0; i < this.state.guessCount; i++) {
@@ -29,7 +36,8 @@ define(['underscore', 'react', 'mastermind/row', 'mastermind/answer_row'], funct
           currentRow: rowCount == this.state.currentRow,
           codeLength: this.state.codeLength,
           colorChoices: this.state.colorChoices,
-          answer: this.state.answer
+          answer: this.state.answer,
+          resolveTurn: this.resolveTurn
         }));
       }
 

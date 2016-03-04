@@ -7,15 +7,18 @@ define([
 ], function(_, React, classnames, Guess, Peg) {
   var Row = React.createClass({
     propTypes: {
+      answer: React.PropTypes.arrayOf(React.PropTypes.string),
       codeLength: React.PropTypes.number,
       colorChoices: React.PropTypes.arrayOf(React.PropTypes.string),
       currentRow: React.PropTypes.bool,
-      reactKey: React.PropTypes.number
+      reactKey: React.PropTypes.number,
+      resolveTurn: React.PropTypes.func
     },
 
     getInitialState: function() {
       return {
-        guesses: {}
+        guesses: {},
+        hintPegs: []
       }
     },
 
@@ -29,7 +32,19 @@ define([
       // read guess values
       // compare to answer
       // render pegs
-      // notify mastermind listener to advance row by 1
+      this.props.resolveTurn(this.isGuessCorrect());
+    },
+
+    isGuessCorrect: function() {
+
+    },
+
+    getHintPegs: function() {
+
+    },
+
+    _renderHintPegs: function () {
+
     },
 
     _renderSubmitButton: function() {
