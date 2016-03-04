@@ -72,7 +72,7 @@ var Mastermind = React.createClass({
         {this.renderEndgameMessage()}
         <AnswerRow answer={this.state.answer} gameOver={this.state.gameOver} />
         {rows}
-        <pre className='debugger'>
+        <pre className='debugger' style={{display:'none'}}>
           {JSON.stringify(this.state)}
         </pre>
       </div>
