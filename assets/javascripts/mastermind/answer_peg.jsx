@@ -1,32 +1,30 @@
-define([
-  'react',
-  'classnames',
-  'mastermind/colored_peg'
-], function(React, classnames, ColoredPeg) {
-  var AnswerPeg = React.createClass({
-    propTypes: {
-      color: React.PropTypes.string,
-      gameOver: React.PropTypes.bool
-    },
+var React = require('react');
+var classnames = require('classnames');
+var ColoredPeg = require('./colored_peg.jsx');
 
-    _classes: function () {
-      var classes = {
-        'unsolved': !this.props.gameOver
-      };
+var AnswerPeg = React.createClass({
+  propTypes: {
+    color: React.PropTypes.string,
+    gameOver: React.PropTypes.bool
+  },
 
-      if (this.props.gameOver) {
-        classes['colored-peg--' + this.props.color] = true;
-      }
+  _classes: function () {
+    var classes = {
+      'unsolved': !this.props.gameOver
+    };
 
-      return classes;
-    },
-
-    render: function () {
-      return (
-        <ColoredPeg classes={this._classes()} />
-      );
+    if (this.props.gameOver) {
+      classes['colored-peg--' + this.props.color] = true;
     }
-  });
 
-  return AnswerPeg;
+    return classes;
+  },
+
+  render: function () {
+    return (
+      <ColoredPeg classes={this._classes()} />
+    );
+  }
 });
+
+module.exports = AnswerPeg;

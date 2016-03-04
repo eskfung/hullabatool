@@ -1,28 +1,26 @@
-define([
-  'react',
-  'classnames'
-], function(React, classnames) {
-  var ColoredPeg = React.createClass({
-    propTypes: {
-      classes: React.PropTypes.object,
-      onClick: React.PropTypes.func
-    },
+var React = require('react');
+var classnames = require('classnames');
 
-    handleClick: function(e) {
-      if (this.props.onClick) {
-        this.props.onClick.call(this, e);
-      }
-    },
+var ColoredPeg = React.createClass({
+  propTypes: {
+    classes: React.PropTypes.object,
+    onClick: React.PropTypes.func
+  },
 
-    render: function () {
-      var classes = classnames('peg', this.props.classes)
-
-      return (
-        <div className={classes} onClick={this.handleClick}>
-        </div>
-      );
+  handleClick: function(e) {
+    if (this.props.onClick) {
+      this.props.onClick.call(this, e);
     }
-  });
+  },
 
-  return ColoredPeg;
+  render: function () {
+    var classes = classnames('peg', this.props.classes)
+
+    return (
+      <div className={classes} onClick={this.handleClick}>
+      </div>
+    );
+  }
 });
+
+module.exports = ColoredPeg;

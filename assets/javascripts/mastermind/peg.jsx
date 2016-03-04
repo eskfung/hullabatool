@@ -1,22 +1,20 @@
-define([
-  'react',
-  'classnames'
-], function(React, classnames) {
-  var Peg = React.createClass({
-    propTypes: {
-      color: React.PropTypes.string
-    },
+var React = require('react');
+var classnames = require('classnames');
 
-    render: function () {
-      var color = this.props.color ? this.props.color : 'blank';
-      var classes = classnames('peg', 'peg-' + color)
+var Peg = React.createClass({
+  propTypes: {
+    color: React.PropTypes.string
+  },
 
-      return (
-        <div className={classes}>
-        </div>
-      );
-    }
-  });
+  render: function () {
+    var color = this.props.color ? this.props.color : 'blank';
+    var classes = classnames('peg', 'peg-' + color)
 
-  return Peg;
+    return (
+      <div className={classes}>
+      </div>
+    );
+  }
 });
+
+module.exports = Peg;
