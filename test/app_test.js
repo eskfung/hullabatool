@@ -1,5 +1,5 @@
 var request = require('request').defaults({ encoding: null });
-var expect = require('expect');
+var expect = require('chai').expect;
 var app = require("../app.js");
 
 describe('Routes', function () {
