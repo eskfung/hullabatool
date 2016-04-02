@@ -9,7 +9,7 @@ var ColoredPeg = React.createClass({
 
   handleClick: function(e) {
     if (this.props.onClick) {
-      this.props.onClick.call(this, e);
+      return this.props.onClick.call(this, e);
     }
   },
 
