@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --compilers jsx:babel-register"
+    "test": "mocha --compilers jsx:babel-register --recursive"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -31,6 +31,7 @@
     "react-dom": "^0.14.8",
     "request": "^2.69.0",
     "should": "^8.2.2",
+    "sinon": "^1.17.3",
     "webpack": "^1.12.14"
   },
   "babel": {
