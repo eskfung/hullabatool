@@ -1,9 +1,10 @@
-var expect = require('chai').expect;
-var app = require(__dirname + '/../app');
-var http = require('http');
+import { expect } from 'chai';
+import http from 'http';
+import app from '../app';
 
-var port = 3333;
-var sessionCookie = null;
+const port = 3333;
+const sessionCookie = null;
+
 var server;
 
 function defaultGetOptions(path) {
