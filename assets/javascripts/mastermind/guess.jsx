@@ -12,7 +12,7 @@ var Guess = React.createClass({
 
   _onClick: function () {
     if (this.props.isActive) {
-      var nextColor = this._nextColor();
+      var nextColor = this.nextColor();
       this.setState({ color: nextColor});
       this.props.onClick(this.props.reactKey, nextColor);
     }
@@ -24,7 +24,7 @@ var Guess = React.createClass({
     return classes;
   },
 
-  _nextColor: function () {
+  nextColor: function () {
     var index = this.props.colorChoices.indexOf(this.state.color);
     index++;
 
