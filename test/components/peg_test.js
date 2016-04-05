@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import React from 'react';
 import { shallow } from 'enzyme';
-import Peg from '../assets/javascripts/mastermind/peg';
+import Peg from '../../assets/javascripts/mastermind/peg';
 
 describe('Peg', function() {
   it('is a div', function(done) {
