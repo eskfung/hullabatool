@@ -5,7 +5,7 @@ I wanted a spot to try out a bunch of tools I'd heard of but never used. This is
 ## Checklist
 
 * Set up a webserver: *ExpressJS*, Sinatra
-* Page templates: *Jade*
+* Page templates: *Pug* (previously Jade)
 * *React*
 * Testing - *Mocha*, Jasmine, Cucumber, Jest, Capybara
 * Manage loading dependencies - *webpack*, requirejs, browserify
