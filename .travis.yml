@@ -1,8 +1,15 @@
 language: node_js
 node_js:
-  - "5"
-  - "5.1"
-  - "4"
-  - "4.2"
-  - "4.1"
-  - "4.0"
+- '5'
+- '5.1'
+- '4'
+- '4.2'
+- '4.1'
+- '4.0'
+deploy:
+  provider: heroku
+  api_key:
+    secure: pY7bNgLJx9X75P+EunHuqLxepdTZfd39A3x+zQ9tPpb8IG23rwtwD+QY3wx1o6Ir8a2gTwZ3z3jdkz4gY2mVm8cP+E7l88xmsBhLwbexoQBqmd0WcFMwQUGWpt/dHsj7PPKQjO9qBGJQy2B+jQ5x7MJbHNEgcT857P7NtEO5+uL/vQJ8wyg6rXkZKVtqP24JrdUrgoih9uUo2qVB3MU/MiCbh2kxd5c/Kn2ybs/6MeSxFEMDmw4xhGHhXtugyAkvFBhbchu8ozRoelL2fabdzcZYcBrGRVtF2FOuF9zAq9Gpqdb6btbOubS/Zq3UmwQlBqK1A+amhmfjQVkhfQvMS/ZapK+2pVw7Ig5ExKoGULpjh5bGTQXEFbef8WFXR4TkcM63KEsAYj+T+UkdoUB4gFXrl6qEt0tndxkDD/PR7CqDEXa1J7WtKiD+61thOCCSQegziceNr/jlVvkjZXzy1P8cNId9TEBBrpb5svEZP8yfbpxrNDN457H5h8crNl2E7a43pxu5TsWNMWmNF6MWSTTE3t8hfO5XrzWNGUJj5zhvIK2bLPYqcYpToPe9Jt6Y715jSgU8N5lG+aX3EJjx84AsUqhxJNcWK/Hl1ZO003joqIvO9P0eOqgl1s3d/aQqLIrDY5ypQJS1Rf9tYIKSaITGlgMUjO0KRcsW42Yt48s=
+  app: hullabatool
+  on:
+    repo: eskfung/hullabatool
