@@ -1,4 +1,4 @@
-var _ = require('underscore');
+var _ = require('lodash');
 var React = require('react');
 var classnames = require('classnames');
 var Guess = require('./guess.jsx');
@@ -50,11 +50,11 @@ var Row = React.createClass({
     }, {});
 
     // Get the black pegs
-    var answerRemainder = _.omit(answerObj, function(value, key, object) {
+    var answerRemainder = _.omitBy(answerObj, function(value, key, object) {
       return this.state.guesses[key] == value;
     }.bind(this));
 
-    var guessRemainder = _.omit(this.state.guesses, function(value, key, object) {
+    var guessRemainder = _.omitBy(this.state.guesses, function(value, key, object) {
       return answerObj[key] == value;
     }.bind(this));
 

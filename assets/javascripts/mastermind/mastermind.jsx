@@ -1,4 +1,4 @@
-var _ = require('underscore');
+var _ = require('lodash');
 var React = require('react');
 var Row = require('./row.jsx');
 var AnswerRow = require('./answer_row.jsx');
@@ -20,7 +20,7 @@ var Mastermind = React.createClass({
   },
 
   generateRandomAnswer: function () {
-    return _.sample(this.state.colorChoices, this.state.codeLength);
+    return _.sampleSize(this.state.colorChoices, this.state.codeLength);
   },
 
   resolveTurn: function (gameWon) {

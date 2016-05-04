@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/mastermind', function(req, res, next) {
-  res.render('mastermind/index', { title: 'Mastermind' });
+  res.render('mastermind', { title: 'Mastermind' });
 });
 
 module.exports = router;
