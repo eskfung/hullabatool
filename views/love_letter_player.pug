@@ -1,0 +1,11 @@
+extends layout
+
+block script
+  script(src='javascripts/love_letter_player.js')
+  script(type='text/javascript').
+    window.__onGCastApiAvailable = function(loaded, errorInfo) {
+      if (loaded) {
+
+      }
+    }
+  script(src='//www.gstatic.com/cv/js/sender/v1/cast_sender.js')
