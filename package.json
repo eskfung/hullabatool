@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "webpack",
     "start": "node ./bin/www",
     "test": "mocha --compilers jsx:babel-register --recursive"
   },

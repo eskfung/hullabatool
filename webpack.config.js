@@ -1,7 +1,10 @@
 module.exports = {
-  entry: './mastermind.js',
+  entry: {
+    mastermind: __dirname + '/assets/javascripts/mastermind.js'
+  },
   output: {
-    filename: './public/javascripts/mastermind.js'
+    path: __dirname + '/public/javascripts',
+    filename: '[name].js'
   },
   module: {
     loaders: [
