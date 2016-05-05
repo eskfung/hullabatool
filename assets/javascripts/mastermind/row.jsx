@@ -3,6 +3,7 @@ var React = require('react');
 var classnames = require('classnames');
 var Guess = require('./guess.jsx');
 var Peg = require('./peg.jsx');
+var HintHelper = require('./hint_helper.js');
 
 var Row = React.createClass({
   propTypes: {
@@ -39,43 +40,16 @@ var Row = React.createClass({
   },
 
   isGuessCorrect: function(hintPegs) {
-    return hintPegs.black == this.props.codeLength;
+    var hintHelper = new HintHelper(this.props.answer, this.state.guesses);
+    return hintHelper.blackPegs() == this.props.codeLength;
   },
 
   getHintPegs: function() {
-    // Convert answer array into object
-    var answerObj = _.reduce(this.props.answer, function(obj, value, index) {
-      obj[index] = value;
-      return obj;
-    }, {});
-
-    // Get the black pegs
-    var answerRemainder = _.omitBy(answerObj, function(value, key, object) {
-      return this.state.guesses[key] == value;
-    }.bind(this));
-
-    var guessRemainder = _.omitBy(this.state.guesses, function(value, key, object) {
-      return answerObj[key] == value;
-    }.bind(this));
-
-    var blackPegs = this.props.answer.length - _.values(answerRemainder).length;
-
-    // Get the white pegs
-    var whitePegs = 0;
-    _.each(guessRemainder, function(guess) {
-      var foundColorIndex = _.findKey(answerRemainder, function(answer) {
-        return answer == guess;
-      });
-
-      if (foundColorIndex) {
-        answerRemainder = _.omit(answerRemainder, foundColorIndex);
-        whitePegs++;
-      }
-    });
+    var hintHelper = new HintHelper(this.props.answer, this.state.guesses);
 
     return {
-      black: blackPegs,
-      white: whitePegs
+      black: hintHelper.blackPegs(),
+      white: hintHelper.whitePegs()
     }
   },
 
