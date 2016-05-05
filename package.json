@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --progress --colors --optimize-minimize --optimize-occurrence-order --optimize-dedupe",
     "start": "node ./bin/www",
     "test": "mocha --compilers jsx:babel-register --recursive"
   },
