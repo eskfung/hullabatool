@@ -1,23 +1,23 @@
+var _ = require('lodash');
 var React = require('react');
 var classnames = require('classnames');
 var AnswerPeg = require('./answer_peg.jsx');
 
 var AnswerRow = React.createClass({
   propTypes: {
-    answer: React.PropTypes.arrayOf(React.PropTypes.string),
+    answer: React.PropTypes.objectOf(React.PropTypes.string),
     gameOver: React.PropTypes.bool
   },
 
   render: function () {
-    var answer = [],
-        rowClasses = classnames({
-          'row': true,
-          'answer-row': true
-        });
+    var answer = _.map(this.props.answer, function(color, index) {
+      return <AnswerPeg key={index} color={color} gameOver={this.props.gameOver} />
+    }.bind(this));
 
-    for (var i = 0; i < this.props.answer.length; i++) {
-      answer.push(<AnswerPeg key={i} color={this.props.answer[i]} gameOver={this.props.gameOver} />);
-    }
+    var rowClasses = classnames({
+      'row': true,
+      'answer-row': true
+    });
 
     return (
       <div className={rowClasses} title={'Answer Row'}>

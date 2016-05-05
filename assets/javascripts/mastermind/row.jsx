@@ -6,7 +6,7 @@ var Peg = require('./peg.jsx');
 
 var Row = React.createClass({
   propTypes: {
-    answer: React.PropTypes.arrayOf(React.PropTypes.string),
+    answer: React.PropTypes.objectOf(React.PropTypes.string),
     codeLength: React.PropTypes.number,
     colorChoices: React.PropTypes.arrayOf(React.PropTypes.string),
     currentRow: React.PropTypes.bool,

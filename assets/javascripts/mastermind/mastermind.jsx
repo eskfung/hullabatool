@@ -9,6 +9,7 @@ var Mastermind = React.createClass({
       guessCount: 10,
       colorChoices: ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'],
       codeLength: 4,
+      allowDuplicates: true,
       currentRow: 1,
       gameOver: false,
       won: false
@@ -20,7 +21,18 @@ var Mastermind = React.createClass({
   },
 
   generateRandomAnswer: function () {
-    return _.sampleSize(this.state.colorChoices, this.state.codeLength);
+    var answerArray;
+    if (this.state.allowDuplicates) {
+      answerArray = _.times(this.state.codeLength, function() { return _.sample(this.state.colorChoices)}.bind(this));
+    } else {
+      answerArray = _.sampleSize(this.state.colorChoices, this.state.codeLength);
+    }
+
+    // convert array to object
+    return _.reduce(answerArray, function(obj, value, index) {
+      obj[index] = value;
+      return obj;
+    }, {});
   },
 
   resolveTurn: function (gameWon) {
