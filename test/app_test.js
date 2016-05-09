@@ -44,6 +44,7 @@ describe('App', function () {
   describe('Routes', function () {
     describe('GET /', function () {
       it('responds with status 200', function(done) {
+        this.timeout(5000);
         var headers = defaultGetOptions('/');
         http.get(headers, function (res) {
           expect(res.statusCode).to.equal(200);
