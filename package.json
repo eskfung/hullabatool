@@ -5,8 +5,9 @@
   "scripts": {
     "build": "webpack --progress --colors --optimize-minimize --optimize-occurrence-order --optimize-dedupe",
     "start": "node ./bin/www",
-    "test": "mocha --compilers jsx:babel-register --recursive"
-  },
+    "test": "mocha --compilers jsx:babel-register --recursive",
+    "postinstall": "node ./bin/deploy"
+ },
   "dependencies": {
     "body-parser": "~1.13.2",
     "classnames": "^2.2.3",
@@ -17,7 +18,8 @@
     "pug": "^2.0.0-alpha3",
     "react": "^0.14.7",
     "react-dom": "^0.14.8",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "webpack": "^1.12.14"
   },
   "devDependencies": {
     "babel-core": "^6.6.4",
@@ -31,8 +33,7 @@
     "react-addons-test-utils": "^0.14.8",
     "request": "^2.69.0",
     "should": "^8.2.2",
-    "sinon": "^1.17.3",
-    "webpack": "^1.12.14"
+    "sinon": "^1.17.3"
   },
   "babel": {
     "presets": [
