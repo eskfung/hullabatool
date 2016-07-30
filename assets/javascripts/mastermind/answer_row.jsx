@@ -11,7 +11,7 @@ var AnswerRow = React.createClass({
 
   render: function () {
     var answer = _.map(this.props.answer, function(color, index) {
-      return <AnswerPeg key={index} color={color} gameOver={this.props.gameOver} />
+      return <AnswerPeg key={index} color={color} gameOver={this.props.gameOver} />;
     }.bind(this));
 
     var rowClasses = classnames({

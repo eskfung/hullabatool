@@ -26,7 +26,7 @@ describe('Guess', function() {
     done();
   });
 
-  context('when the color state changes', function() {
+  describe('when the color state changes', function() {
     it('passes the colored-peg--{color} class prop to its ColoredPeg', function(done) {
       var guessWrapper = shallow(<Guess />);
       guessWrapper.setState({'color':'lavender'});
@@ -37,7 +37,7 @@ describe('Guess', function() {
     });
   });
 
-  context('when Guess is active', function() {
+  describe('when Guess is active', function() {
     it('calls the onClick prop function with the react key and next color', function(done) {
       var spy = sinon.spy();
       var reactKey = 1;
@@ -71,7 +71,7 @@ describe('Guess', function() {
     });
   });
 
-  context('when Guess is inactive', function() {
+  describe('when Guess is inactive', function() {
     it('does not call the onClick prop function', function(done) {
       var spy = sinon.spy();
       var guessWrapper = shallow(<Guess
@@ -86,7 +86,7 @@ describe('Guess', function() {
   });
 
   describe('#nextColor', function() {
-    context('when the current state color is not in the color choices', function() {
+    describe('when the current state color is not in the color choices', function() {
       it('is the first color', function(done) {
         var guessWrapper = shallow(<Guess colorChoices={['red', 'blue', 'green']}/>);
         guessWrapper.setState({'color':'lavender'});
@@ -95,7 +95,7 @@ describe('Guess', function() {
       });
     });
 
-    context('when the current state color is in the color choices', function() {
+    describe('when the current state color is in the color choices', function() {
       it('is the next color in order', function(done) {
         var guessWrapper = shallow(<Guess colorChoices={['red', 'blue', 'green']}/>);
         guessWrapper.setState({'color':'red'});
@@ -104,7 +104,7 @@ describe('Guess', function() {
       });
     });
 
-    context('when the current state color is the last of the color choices', function() {
+    describe('when the current state color is the last of the color choices', function() {
       it('is the first color', function(done) {
         var guessWrapper = shallow(<Guess colorChoices={['red', 'blue', 'green']}/>);
         guessWrapper.setState({'color':'green'});

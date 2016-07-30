@@ -12,7 +12,7 @@ describe('AnswerPeg', function() {
     done();
   });
 
-  context('when the game is not over', function() {
+  describe('when the game is not over', function() {
     it('passes the unsolved class prop to its ColoredPeg', function(done) {
       var answerPegWrapper = shallow(<AnswerPeg gameOver={false} />);
       var coloredPeg = answerPegWrapper.find(ColoredPeg);
@@ -21,7 +21,7 @@ describe('AnswerPeg', function() {
     });
   });
 
-  context('when the game is over', function() {
+  describe('when the game is over', function() {
     it('does not pass the unsolved class prop to its ColoredPeg', function(done) {
       var answerPegWrapper = shallow(<AnswerPeg gameOver={true} />);
       var coloredPeg = answerPegWrapper.find(ColoredPeg);

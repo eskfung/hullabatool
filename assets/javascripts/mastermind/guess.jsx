@@ -1,5 +1,4 @@
 var React = require('react');
-var classnames = require('classnames');
 var ColoredPeg = require('./colored_peg.jsx');
 
 var Guess = React.createClass({

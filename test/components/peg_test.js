@@ -18,7 +18,7 @@ describe('Peg', function() {
     done();
   });
 
-  context('without a color', function() {
+  describe('without a color', function() {
     it('has a peg-blank classname', function(done) {
       var pegWrapper = shallow(<Peg />);
       expect(pegWrapper.props().className.split(' ').indexOf('peg-blank')).to.not.equal(-1);
@@ -27,7 +27,7 @@ describe('Peg', function() {
     });
   });
 
-  context('with a color passed in as a prop', function() {
+  describe('with a color passed in as a prop', function() {
     it('has a peg- classname matching the color prop', function(done) {
       var pegWrapper = shallow(<Peg color='lavender'/>);
       expect(pegWrapper.props().className.split(' ').indexOf('peg-lavender')).to.not.equal(-1);

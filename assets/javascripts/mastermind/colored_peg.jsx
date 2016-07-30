@@ -14,7 +14,7 @@ var ColoredPeg = React.createClass({
   },
 
   render: function () {
-    var classes = classnames('peg', this.props.classes)
+    var classes = classnames('peg', this.props.classes);
 
     return (
       <div className={classes} onClick={this.handleClick}>

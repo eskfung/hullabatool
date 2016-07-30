@@ -6,8 +6,9 @@
     "build": "webpack --progress --colors",
     "start": "node ./bin/www",
     "test": "mocha --compilers jsx:babel-register --recursive",
+    "lint": "eslint --ext .js,.jsx --fix test/**/* assets/**/*",
     "heroku-postbuild": "webpack --optimize-minimize --optimize-occurrence-order --optimize-dedupe"
- },
+  },
   "dependencies": {
     "babel-core": "^6.6.4",
     "babel-loader": "^6.2.4",
@@ -29,6 +30,9 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "enzyme": "^2.2.0",
+    "eslint": "^3.2.0",
+    "eslint-plugin-mocha": "^4.2.0",
+    "eslint-plugin-react": "^5.2.2",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^15.1.0",
     "request": "^2.69.0",

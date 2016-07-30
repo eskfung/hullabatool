@@ -23,7 +23,7 @@ var Mastermind = React.createClass({
   generateRandomAnswer: function () {
     var answerArray;
     if (this.state.allowDuplicates) {
-      answerArray = _.times(this.state.codeLength, function() { return _.sample(this.state.colorChoices)}.bind(this));
+      answerArray = _.times(this.state.codeLength, function() { return _.sample(this.state.colorChoices);}.bind(this));
     } else {
       answerArray = _.sampleSize(this.state.colorChoices, this.state.codeLength);
     }
@@ -60,7 +60,7 @@ var Mastermind = React.createClass({
       <p>
         {message}
       </p>
-    )
+    );
   },
 
   render: function () {

@@ -22,7 +22,7 @@ var Row = React.createClass({
         black: 0,
         white: 0
       }
-    }
+    };
   },
 
   _guessListener: function(guessIndex, color) {
@@ -36,10 +36,10 @@ var Row = React.createClass({
     this.setState({
       hintPegs: hintPegs
     });
-    this.props.resolveTurn(this.isGuessCorrect(hintPegs));
+    this.props.resolveTurn(this.isGuessCorrect());
   },
 
-  isGuessCorrect: function(hintPegs) {
+  isGuessCorrect: function() {
     var hintHelper = new HintHelper(this.props.answer, this.state.guesses);
     return hintHelper.blackPegs() == this.props.codeLength;
   },
@@ -50,7 +50,7 @@ var Row = React.createClass({
     return {
       black: hintHelper.blackPegs(),
       white: hintHelper.whitePegs()
-    }
+    };
   },
 
   _renderHintPegs: function () {
@@ -58,16 +58,16 @@ var Row = React.createClass({
     var remainder = this.props.codeLength - (this.state.hintPegs.black + this.state.hintPegs.white);
 
     _.times(this.state.hintPegs.black, function(n) {
-      pegs.push(<Peg key={'black-' + n} color='black' />)
-    })
+      pegs.push(<Peg key={'black-' + n} color='black' />);
+    });
 
     _.times(this.state.hintPegs.white, function(n) {
-      pegs.push(<Peg key={'white-' + n} color='white' />)
-    })
+      pegs.push(<Peg key={'white-' + n} color='white' />);
+    });
 
     _.times(remainder, function(n) {
-      pegs.push(<Peg key={'blank-' + n} />)
-    })
+      pegs.push(<Peg key={'blank-' + n} />);
+    });
 
     return pegs;
   },
@@ -87,10 +87,10 @@ var Row = React.createClass({
 
   render: function () {
     var guesses = [],
-        rowClasses = classnames({
-          'row': true,
-          'current-row': this.props.currentRow
-        });
+      rowClasses = classnames({
+        'row': true,
+        'current-row': this.props.currentRow
+      });
 
     for (var i = 0; i < this.props.codeLength; i++) {
       guesses.push(
