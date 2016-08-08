@@ -80,7 +80,7 @@ var Mastermind = React.createClass({
     }
 
     return (
-      <div>
+      <div className='mastermind'>
         {this.renderEndgameMessage()}
         <AnswerRow answer={this.state.answer} gameOver={this.state.gameOver} />
         {rows}

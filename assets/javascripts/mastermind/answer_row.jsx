@@ -21,7 +21,9 @@ var AnswerRow = React.createClass({
 
     return (
       <div className={rowClasses} title={'Answer Row'}>
-        {answer}
+        <div className='pegs'>
+          {answer}
+        </div>
       </div>
     );
   }

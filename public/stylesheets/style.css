@@ -7,13 +7,38 @@ a {
   color: #00B7FF;
 }
 
+.mastermind {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
 .hidden {
   display: none;
 }
 
-.answer-row,
-.guess-group,
+.row {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 10px auto;
+}
+
+.pegs {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .peg-group {
+  display: flex;
+  flex-flow: row wrap;
+  width: 35px;
+}
+
+.peg-group .peg {
+  width: 15px;
+  height: 15px;
+}
+
+.guess-group {
   display: inline-block;
   border: 1px solid black;
 }
@@ -83,14 +108,13 @@ a {
 }
 
 .peg-blank {
-  background-color: grey;
+  background-color: lightgray;
 }
 
 .peg.unsolved {
   background-color: #abc;
 }
 
-.current-row .guess-group {
-  border-color: green;
-  border-width: 5px;
+.current-row {
+  border: 5px solid green;
 }

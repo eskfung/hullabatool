@@ -105,11 +105,13 @@ var Row = React.createClass({
 
     return (
       <div className={rowClasses} title={'Row ' + this.props.reactKey}>
-        <div className='peg-group'>
-          {this._renderHintPegs()}
-        </div>
-        <div className='guess-group'>
-          {guesses}
+        <div className='pegs'>
+          <div className='peg-group'>
+            {this._renderHintPegs()}
+          </div>
+          <div className='guess-group'>
+            {guesses}
+          </div>
         </div>
         {this._renderSubmitButton()}
       </div>
