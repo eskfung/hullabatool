@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "babel-register": "^6.7.2",
-    "body-parser": "~1.15.2",
+    "body-parser": "~1.16.1",
     "classnames": "^2.2.3",
     "cookie-parser": "~1.4.3",
     "express": "~4.14.0",
     "lodash": "^4.11.2",
-    "morgan": "~1.7.0",
-    "pug": "^2.0.0-alpha3",
+    "morgan": "^1.8.1",
+    "pug": "^2.0.0-beta11",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "serve-favicon": "~2.3.0",
-    "webpack": "^1.12.14"
+    "webpack": "^2.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.6.4",
@@ -32,12 +32,9 @@
     "chai": "^3.5.0",
     "enzyme": "^2.2.0",
     "eslint": "^3.2.0",
-    "eslint-plugin-mocha": "^4.2.0",
-    "eslint-plugin-react": "^5.2.2",
-    "mocha": "^2.4.5",
+    "mocha": "^3.2.0",
     "react-addons-test-utils": "^15.1.0",
     "request": "^2.69.0",
-    "should": "^9.0.2",
     "sinon": "^1.17.3"
   },
   "babel": {
