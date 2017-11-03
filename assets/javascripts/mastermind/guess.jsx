@@ -1,12 +1,13 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 var ColoredPeg = require('./colored_peg.jsx');
 
 var Guess = React.createClass({
   propTypes: {
-    colorChoices: React.PropTypes.arrayOf(React.PropTypes.string),
-    isActive: React.PropTypes.bool,
-    onClick: React.PropTypes.func,
-    reactKey: React.PropTypes.number
+    colorChoices: PropTypes.arrayOf(PropTypes.string),
+    isActive: PropTypes.bool,
+    onClick: PropTypes.func,
+    reactKey: PropTypes.number
   },
 
   _onClick: function () {

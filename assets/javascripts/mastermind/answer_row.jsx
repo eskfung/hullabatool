@@ -1,12 +1,13 @@
 var _ = require('lodash');
 var React = require('react');
+var PropTypes = require('prop-types');
 var classnames = require('classnames');
 var AnswerPeg = require('./answer_peg.jsx');
 
 var AnswerRow = React.createClass({
   propTypes: {
-    answer: React.PropTypes.objectOf(React.PropTypes.string),
-    gameOver: React.PropTypes.bool
+    answer: PropTypes.objectOf(PropTypes.string),
+    gameOver: PropTypes.bool
   },
 
   render: function () {

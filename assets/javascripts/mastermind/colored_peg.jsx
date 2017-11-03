@@ -1,10 +1,11 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 var classnames = require('classnames');
 
 var ColoredPeg = React.createClass({
   propTypes: {
-    classes: React.PropTypes.object,
-    onClick: React.PropTypes.func
+    classes: PropTypes.object,
+    onClick: PropTypes.func
   },
 
   handleClick: function(e) {

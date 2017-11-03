@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var React = require('react');
+var PropTypes = require('prop-types');
 var classnames = require('classnames');
 var Guess = require('./guess.jsx');
 var Peg = require('./peg.jsx');
@@ -7,12 +8,12 @@ var HintHelper = require('./hint_helper.js');
 
 var Row = React.createClass({
   propTypes: {
-    answer: React.PropTypes.objectOf(React.PropTypes.string),
-    codeLength: React.PropTypes.number,
-    colorChoices: React.PropTypes.arrayOf(React.PropTypes.string),
-    currentRow: React.PropTypes.bool,
-    reactKey: React.PropTypes.number,
-    resolveTurn: React.PropTypes.func
+    answer: PropTypes.objectOf(PropTypes.string),
+    codeLength: PropTypes.number,
+    colorChoices: PropTypes.arrayOf(PropTypes.string),
+    currentRow: PropTypes.bool,
+    reactKey: PropTypes.number,
+    resolveTurn: PropTypes.func
   },
 
   getInitialState: function() {

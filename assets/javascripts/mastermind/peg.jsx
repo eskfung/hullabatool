@@ -1,9 +1,10 @@
 var React = require('react');
+var PropTypes = require('prop-types');
 var classnames = require('classnames');
 
 var Peg = React.createClass({
   propTypes: {
-    color: React.PropTypes.string
+    color: PropTypes.string
   },
 
   render: function () {
