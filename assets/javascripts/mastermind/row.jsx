@@ -1,12 +1,12 @@
-var _ = require('lodash');
-var React = require('react');
-var PropTypes = require('prop-types');
-var classnames = require('classnames');
-var Guess = require('./guess.jsx');
-var Peg = require('./peg.jsx');
-var HintHelper = require('./hint_helper.js');
+import _ from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import Guess from './guess.jsx';
+import Peg from './peg.jsx';
+import HintHelper from './hint_helper.js';
 
-var Row = React.createClass({
+export default React.createClass({
   propTypes: {
     answer: PropTypes.objectOf(PropTypes.string),
     codeLength: PropTypes.number,
@@ -27,13 +27,13 @@ var Row = React.createClass({
   },
 
   _guessListener: function(guessIndex, color) {
-    var prevGuesses = this.state.guesses;
+    const prevGuesses = this.state.guesses;
     prevGuesses[guessIndex] = color;
     this.setState({guesses: prevGuesses});
   },
 
   _handleSubmit: function() {
-    var hintPegs = this.getHintPegs();
+    const hintPegs = this.getHintPegs();
     this.setState({
       hintPegs: hintPegs
     });
@@ -41,12 +41,12 @@ var Row = React.createClass({
   },
 
   isGuessCorrect: function() {
-    var hintHelper = new HintHelper(this.props.answer, this.state.guesses);
+    const hintHelper = new HintHelper(this.props.answer, this.state.guesses);
     return hintHelper.blackPegs() == this.props.codeLength;
   },
 
   getHintPegs: function() {
-    var hintHelper = new HintHelper(this.props.answer, this.state.guesses);
+    const hintHelper = new HintHelper(this.props.answer, this.state.guesses);
 
     return {
       black: hintHelper.blackPegs(),
@@ -55,8 +55,8 @@ var Row = React.createClass({
   },
 
   _renderHintPegs: function () {
-    var pegs = [];
-    var remainder = this.props.codeLength - (this.state.hintPegs.black + this.state.hintPegs.white);
+    const pegs = [];
+    const remainder = this.props.codeLength - (this.state.hintPegs.black + this.state.hintPegs.white);
 
     _.times(this.state.hintPegs.black, function(n) {
       pegs.push(<Peg key={'black-' + n} color='black' />);
@@ -74,7 +74,7 @@ var Row = React.createClass({
   },
 
   _renderSubmitButton: function() {
-    var buttonClasses = classnames({
+    const buttonClasses = classnames({
       'btn': true,
       'hidden': !this.props.currentRow || (_.keys(this.state.guesses).length != this.props.codeLength)
     });
@@ -87,13 +87,13 @@ var Row = React.createClass({
   },
 
   render: function () {
-    var guesses = [],
+    const guesses = [],
       rowClasses = classnames({
         'row': true,
         'current-row': this.props.currentRow
       });
 
-    for (var i = 0; i < this.props.codeLength; i++) {
+    for (let i = 0; i < this.props.codeLength; i++) {
       guesses.push(
         <Guess key={i}
           reactKey={i}
@@ -119,5 +119,3 @@ var Row = React.createClass({
     );
   }
 });
-
-module.exports = Row;

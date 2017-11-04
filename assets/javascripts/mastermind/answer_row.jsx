@@ -1,21 +1,21 @@
-var _ = require('lodash');
-var React = require('react');
-var PropTypes = require('prop-types');
-var classnames = require('classnames');
-var AnswerPeg = require('./answer_peg.jsx');
+import _ from 'lodash';
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+import AnswerPeg from './answer_peg.jsx';
 
-var AnswerRow = React.createClass({
+export default React.createClass({
   propTypes: {
     answer: PropTypes.objectOf(PropTypes.string),
     gameOver: PropTypes.bool
   },
 
   render: function () {
-    var answer = _.map(this.props.answer, function(color, index) {
+    const answer = _.map(this.props.answer, function(color, index) {
       return <AnswerPeg key={index} color={color} gameOver={this.props.gameOver} />;
     }.bind(this));
 
-    var rowClasses = classnames({
+    const rowClasses = classnames({
       'row': true,
       'answer-row': true
     });
@@ -29,5 +29,3 @@ var AnswerRow = React.createClass({
     );
   }
 });
-
-module.exports = AnswerRow;

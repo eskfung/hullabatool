@@ -1,15 +1,15 @@
-var React = require('react');
-var PropTypes = require('prop-types');
-var ColoredPeg = require('./colored_peg.jsx');
+import React from 'react';
+import PropTypes from 'prop-types';
+import ColoredPeg from './colored_peg.jsx';
 
-var AnswerPeg = React.createClass({
+export default React.createClass({
   propTypes: {
     color: PropTypes.string,
     gameOver: PropTypes.bool
   },
 
   _classes: function () {
-    var classes = {
+    const classes = {
       'unsolved': !this.props.gameOver
     };
 
@@ -26,5 +26,3 @@ var AnswerPeg = React.createClass({
     );
   }
 });
-
-module.exports = AnswerPeg;

@@ -1,8 +1,8 @@
-var React = require('react');
-var PropTypes = require('prop-types');
-var ColoredPeg = require('./colored_peg.jsx');
+import React from 'react';
+import PropTypes from 'prop-types';
+import ColoredPeg from './colored_peg.jsx';
 
-var Guess = React.createClass({
+export default React.createClass({
   propTypes: {
     colorChoices: PropTypes.arrayOf(PropTypes.string),
     isActive: PropTypes.bool,
@@ -12,20 +12,20 @@ var Guess = React.createClass({
 
   _onClick: function () {
     if (this.props.isActive) {
-      var nextColor = this.nextColor();
+      const nextColor = this.nextColor();
       this.setState({ color: nextColor});
       this.props.onClick(this.props.reactKey, nextColor);
     }
   },
 
   _classes: function () {
-    var classes = {};
+    const classes = {};
     classes['colored-peg--' + this.state.color] = true;
     return classes;
   },
 
   nextColor: function () {
-    var index = this.props.colorChoices.indexOf(this.state.color);
+    let index = this.props.colorChoices.indexOf(this.state.color);
     index++;
 
     if (index == this.props.colorChoices.length) {
@@ -47,5 +47,3 @@ var Guess = React.createClass({
     );
   }
 });
-
-module.exports = Guess;

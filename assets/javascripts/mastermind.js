@@ -1,6 +1,6 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Mastermind = require('./mastermind/mastermind.jsx');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Mastermind from './mastermind/mastermind.jsx';
 
 ReactDOM.render(
   React.createElement(Mastermind, null),

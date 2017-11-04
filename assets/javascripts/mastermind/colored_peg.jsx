@@ -1,8 +1,8 @@
-var React = require('react');
-var PropTypes = require('prop-types');
-var classnames = require('classnames');
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-var ColoredPeg = React.createClass({
+export default React.createClass({
   propTypes: {
     classes: PropTypes.object,
     onClick: PropTypes.func
@@ -15,7 +15,7 @@ var ColoredPeg = React.createClass({
   },
 
   render: function () {
-    var classes = classnames('peg', this.props.classes);
+    const classes = classnames('peg', this.props.classes);
 
     return (
       <div className={classes} onClick={this.handleClick}>
@@ -23,5 +23,3 @@ var ColoredPeg = React.createClass({
     );
   }
 });
-
-module.exports = ColoredPeg;

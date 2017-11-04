@@ -1,8 +1,8 @@
-var _ = require('lodash');
+import _ from 'lodash';
 
 // answers {0: 'white', 1: 'black'}
 // guesses {0: 'red', 1: 'blue'}
-var HintHelper = function (answers, guesses) {
+export default function (answers, guesses) {
   this.answers = answers;
   this.guesses = guesses;
 
@@ -23,11 +23,11 @@ var HintHelper = function (answers, guesses) {
   };
 
   this.whitePegs = function() {
-    var whitePegs = 0,
-      answerRemainder = this._nonExactAnswerPegs();
+    let whitePegs = 0;
+    let answerRemainder = this._nonExactAnswerPegs();
 
     _.each(this._nonExactGuessPegs(), function(guess) {
-      var foundColorIndex = _.findKey(answerRemainder, function(answer) {
+      const foundColorIndex = _.findKey(answerRemainder, function(answer) {
         return answer == guess;
       });
 
@@ -39,6 +39,4 @@ var HintHelper = function (answers, guesses) {
 
     return whitePegs;
   };
-};
-
-module.exports = HintHelper;
+}

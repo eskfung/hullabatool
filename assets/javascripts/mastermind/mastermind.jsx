@@ -1,9 +1,9 @@
-var _ = require('lodash');
-var React = require('react');
-var Row = require('./row.jsx');
-var AnswerRow = require('./answer_row.jsx');
+import _ from 'lodash';
+import React from 'react';
+import Row from './row.jsx';
+import AnswerRow from './answer_row.jsx';
 
-var Mastermind = React.createClass({
+export default React.createClass({
   getInitialState: function () {
     return {
       guessCount: 10,
@@ -21,7 +21,7 @@ var Mastermind = React.createClass({
   },
 
   generateRandomAnswer: function () {
-    var answerArray;
+    let answerArray;
     if (this.state.allowDuplicates) {
       answerArray = _.times(this.state.codeLength, function() { return _.sample(this.state.colorChoices);}.bind(this));
     } else {
@@ -48,7 +48,7 @@ var Mastermind = React.createClass({
   },
 
   renderEndgameMessage: function () {
-    var message;
+    let message;
     if (this.state.gameOver) {
       if (this.state.won) {
         message = "You won!";
@@ -64,9 +64,9 @@ var Mastermind = React.createClass({
   },
 
   render: function () {
-    var rows = [];
-    for (var i = 0; i < this.state.guessCount; i++) {
-      var rowCount = this.state.guessCount - i;
+    const rows = [];
+    for (let i = 0; i < this.state.guessCount; i++) {
+      const rowCount = this.state.guessCount - i;
       rows.push(
         <Row key={i}
           reactKey={rowCount}
@@ -91,5 +91,3 @@ var Mastermind = React.createClass({
     );
   }
 });
-
-module.exports = Mastermind;

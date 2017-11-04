@@ -1,15 +1,15 @@
-var React = require('react');
-var PropTypes = require('prop-types');
-var classnames = require('classnames');
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-var Peg = React.createClass({
+export default React.createClass({
   propTypes: {
     color: PropTypes.string
   },
 
   render: function () {
-    var color = this.props.color ? this.props.color : 'blank';
-    var classes = classnames('peg', 'peg-' + color);
+    const color = this.props.color ? this.props.color : 'blank';
+    const classes = classnames('peg', 'peg-' + color);
 
     return (
       <div className={classes}>
@@ -17,5 +17,3 @@ var Peg = React.createClass({
     );
   }
 });
-
-module.exports = Peg;

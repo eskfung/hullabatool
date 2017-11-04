@@ -5,10 +5,10 @@ import app from '../app';
 const port = 3333;
 const sessionCookie = null;
 
-var server;
+let server;
 
 function defaultGetOptions(path) {
-  var options = {
+  const options = {
     "host": "localhost",
     "port": port,
     "path": path,
@@ -45,7 +45,7 @@ describe('App', function () {
     describe('GET /', function () {
       it('responds with status 200', function(done) {
         this.timeout(5000);
-        var headers = defaultGetOptions('/');
+        const headers = defaultGetOptions('/');
         http.get(headers, function (res) {
           expect(res.statusCode).to.equal(200);
           done();
@@ -55,7 +55,7 @@ describe('App', function () {
 
     describe('GET /mastermind', function () {
       it('responds with status 200', function(done) {
-        var headers = defaultGetOptions('/mastermind');
+        const headers = defaultGetOptions('/mastermind');
         http.get(headers, function (res) {
           expect(res.statusCode).to.equal(200);
           done();
