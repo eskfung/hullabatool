@@ -1,11 +1,9 @@
 language: node_js
 node_js:
-- '6'
-- '5'
-- '4'
+- 'node'
 deploy:
   provider: heroku
-  app: hullabatool
+  app: hullabatool-staging
   on:
     repo: eskfung/hullabatool
   api_key:
