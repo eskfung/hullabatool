@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import Home from 'pages/Home';
 import Mastermind from 'mastermind/Mastermind';
+import "./App.css";
 
 const MainContainer = () => (
   <div>
     <nav>
-      <Link to="/">Home</Link>
-      <Link to="/mastermind">Mastermind</Link>
+      <Link to="/" className="nav-link">Home</Link>
+      <Link to="/mastermind" className="nav-link">Mastermind</Link>
     </nav>
     <main>
       <Route path="/" exact component={Home} />
