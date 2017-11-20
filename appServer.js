@@ -1,20 +1,9 @@
 /* globals __dirname */
 const express = require('express');
 const path = require('path');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-
 const appServer = express();
 
 // view engine setup
-appServer.set('views', path.join(__dirname, 'views'));
-appServer.set('view engine', 'pug');
-
-appServer.use(logger('dev'));
-appServer.use(bodyParser.json());
-appServer.use(bodyParser.urlencoded({ extended: false }));
-appServer.use(cookieParser());
 appServer.use(express.static(path.join(__dirname, 'dist')));
 
 appServer.get('/*', (req, res) => {
