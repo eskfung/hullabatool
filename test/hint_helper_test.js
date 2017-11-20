@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import HintHelper from '../assets/javascripts/mastermind/hint_helper';
+import HintHelper from '../src//mastermind/hint_helper';
 
 describe('HintHelper', function() {
   describe('#blackPegs', function() {

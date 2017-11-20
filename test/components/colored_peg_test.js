@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import ColoredPeg from '../../assets/javascripts/mastermind/colored_peg';
+import ColoredPeg from '../../src/mastermind/colored_peg';
 
 describe('ColoredPeg', function() {
   it('is a div', function(done) {

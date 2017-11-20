@@ -2,8 +2,8 @@ import { expect } from 'chai';
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import Guess from '../../assets/javascripts/mastermind/guess';
-import ColoredPeg from '../../assets/javascripts/mastermind/colored_peg';
+import Guess from '../../src/mastermind/guess';
+import ColoredPeg from '../../src/mastermind/colored_peg';
 
 describe('Guess', function() {
   it('is a ColoredPeg', function(done) {

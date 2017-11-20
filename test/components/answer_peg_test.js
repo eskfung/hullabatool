@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import React from 'react';
 import { shallow } from 'enzyme';
-import AnswerPeg from '../../assets/javascripts/mastermind/answer_peg';
-import ColoredPeg from '../../assets/javascripts/mastermind/colored_peg';
+import AnswerPeg from '../../src/mastermind/answer_peg';
+import ColoredPeg from '../../src/mastermind/colored_peg';
 
 describe('AnswerPeg', function() {
   it('is a ColoredPeg', function(done) {
