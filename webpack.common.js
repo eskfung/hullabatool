@@ -1,25 +1,38 @@
 /* globals __dirname */
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 module.exports = {
   entry: {
-    mastermind: __dirname + '/src/mastermind.js'
+    app: path.resolve(__dirname, 'src', 'App.jsx')
   },
   output: {
-    path: __dirname + '/public/javascripts',
-    filename: '[name].js'
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
+  },
+  resolve: {
+    modules: [
+      "node_modules",
+      path.resolve(__dirname, 'src')
+    ]
   },
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.(js|jsx)$/,
         use: [
           {
-            loader: 'babel-loader',
-            options: {
-              presets: ['env', 'stage-3', 'react']
-            }
+            loader: 'babel-loader'
           }
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(['dist']),
+    new HtmlWebpackPlugin({
+      title: 'Hullabatool'
+    })
+  ]
 };

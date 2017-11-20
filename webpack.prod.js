@@ -1,14 +1,13 @@
-/* globals __dirname */
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const webpack = require('webpack');
 
 module.exports = merge(common, {
-  devtool: 'source-map',
-  devServer: {
-    contentBase: __dirname + '/public/javascripts',
-    hot: true
+  output: {
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
   },
+  devtool: 'source-map',
   plugins: [
     // new webpack.optimize.UglifyJsPlugin({
     //   sourceMap: true,
