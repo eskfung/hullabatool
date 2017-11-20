@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "webpack --progress --colors",
+    "build": "webpack --progress --colors --config webpack.dev.js",
     "start": "node ./bin/www",
     "test": "mocha --compilers jsx:babel-register --recursive",
     "lint": "eslint --ext .js,.jsx --fix test/**/* assets/**/*",
-    "heroku-postbuild": "webpack"
+    "watch": "webpack-dev-server --config webpack.dev.js",
+    "heroku-postbuild": "webpack --config webpack.prod.js"
   },
   "dependencies": {
     "babel-core": "6",
@@ -27,7 +28,8 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "serve-favicon": "^2.4.5",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "webpack-merge": "^4.1.1"
   },
   "devDependencies": {
     "babel-jest": "^21.2.0",
@@ -40,6 +42,7 @@
     "mocha": "^3.2.0",
     "react-addons-test-utils": "^15.1.0",
     "request": "^2.69.0",
-    "sinon": "^1.17.3"
+    "sinon": "^1.17.3",
+    "webpack-dev-server": "^2.9.4"
   }
 }

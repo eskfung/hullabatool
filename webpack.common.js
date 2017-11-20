@@ -1,6 +1,7 @@
+/* globals __dirname */
 module.exports = {
   entry: {
-    mastermind: __dirname + '/assets/javascripts/mastermind.js'
+    mastermind: __dirname + '/src/mastermind.js'
   },
   output: {
     path: __dirname + '/public/javascripts',
