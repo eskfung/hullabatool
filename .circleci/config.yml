@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/hullabatool
+    docker:
+      - image: circleci/node:8.9.1
+    steps:
+      - checkout
+      - run: yarn install
+      - restore_cache:
+          keys:
+            - dependency-cache-{{ arch }}-{{ .Branch}}-{{ checksum "yarn.lock" }}
+            - dependency-cache-{{ arch }}-{{ .Branch}}
+            - dependency-cache
+      - save_cache:
+          key: dependency-cache-{{ arch }}-{{ .Branch}}-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - run: yarn test
