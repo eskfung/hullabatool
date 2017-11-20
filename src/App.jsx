@@ -1,25 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import Home from 'pages/Home';
+import Mastermind from 'mastermind/Mastermind';
 
-const HomePage = () => <div>Home Page</div>;
-const UsersPage = () => <div>Users Page</div>;
-
-const PrimaryLayout = () => (
-  <div className="primary-layout">
-    <header>
-      Placeholder
-    </header>
+const MainContainer = () => (
+  <div>
+    <nav>
+      <Link to="/">Home</Link>
+      <Link to="/mastermind">Mastermind</Link>
+    </nav>
     <main>
-      <Route path="/" exact component={HomePage} />
-      <Route path="/users" component={UsersPage} />
+      <Route path="/" exact component={Home} />
+      <Route path="/mastermind" component={Mastermind} />
     </main>
   </div>
 );
 
 const App = () => (
   <BrowserRouter>
-    <PrimaryLayout />
+    <MainContainer />
   </BrowserRouter>
 );
 

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React from 'react';
-import Row from './row.jsx';
-import AnswerRow from './answer_row.jsx';
+import Row from 'mastermind/Row';
+import AnswerRow from 'mastermind/AnswerRow';
 
 export default React.createClass({
   getInitialState: function () {

@@ -2,9 +2,9 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Guess from './guess.jsx';
-import Peg from './peg.jsx';
-import HintHelper from './hint_helper.js';
+import Guess from 'mastermind/Guess';
+import Peg from 'mastermind/Peg';
+import HintHelper from 'mastermind/HintHelper';
 
 export default React.createClass({
   propTypes: {

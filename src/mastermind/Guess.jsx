@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ColoredPeg from './colored_peg.jsx';
+import ColoredPeg from 'mastermind/ColoredPeg';
 
 export default React.createClass({
   propTypes: {

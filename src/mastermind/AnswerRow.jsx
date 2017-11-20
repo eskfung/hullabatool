@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import AnswerPeg from './answer_peg.jsx';
+import AnswerPeg from 'mastermind/AnswerPeg';
 
 export default React.createClass({
   propTypes: {
