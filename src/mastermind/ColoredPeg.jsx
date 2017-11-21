@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import cx from "classnames";
 
 export default class ColoredPeg extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class ColoredPeg extends React.Component {
   }
 
   render() {
-    const classes = cx('peg', this.props.classes);
+    const classes = cx("peg", this.props.classes);
 
     return (
       <div className={classes} onClick={this.handleClick} />

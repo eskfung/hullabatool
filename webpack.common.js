@@ -1,22 +1,22 @@
 /* globals __dirname */
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, 'src', 'App.jsx')
+    app: path.resolve(__dirname, "src", "App.jsx"),
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
   },
   resolve: {
     modules: [
       "node_modules",
-      path.resolve(__dirname, 'src')
+      path.resolve(__dirname, "src"),
     ],
-    extensions: ['.js', '.jsx']
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [
@@ -24,20 +24,20 @@ module.exports = {
         test: /\.(js|jsx)$/,
         use: [
           {
-            loader: 'babel-loader'
-          }
-        ]
+            loader: "babel-loader",
+          },
+        ],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
+        use: ["style-loader", "css-loader"],
+      },
+    ],
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(["dist"]),
     new HtmlWebpackPlugin({
-      title: 'Hullabatool'
-    })
-  ]
+      title: "Hullabatool",
+    }),
+  ],
 };

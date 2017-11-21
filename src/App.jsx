@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import Home from 'pages/Home';
-import Mastermind from 'mastermind/Mastermind';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import Home from "pages/Home";
+import Mastermind from "mastermind/Mastermind";
 import "./App.css";
 
 const MainContainer = () => (
@@ -28,5 +28,5 @@ export default App;
 
 ReactDOM.render(
   React.createElement(App, null),
-  document.body.appendChild(document.createElement('div'))
+  document.body.appendChild(document.createElement("div"))
 );

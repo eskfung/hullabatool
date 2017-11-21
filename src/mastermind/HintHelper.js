@@ -1,8 +1,8 @@
-import _ from 'lodash';
+import _ from "lodash";
 
 // answers {0: 'white', 1: 'black'}
 // guesses {0: 'red', 1: 'blue'}
-export default function (answers, guesses) {
+export default function(answers, guesses) {
   this.answers = answers;
   this.guesses = guesses;
 

@@ -1,10 +1,9 @@
-import { keys, times } from 'lodash';
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import Guess from 'mastermind/Guess';
-import Peg from 'mastermind/Peg';
-import HintHelper from 'mastermind/HintHelper';
+import { keys, times } from "lodash";
+import React from "react";
+import cx from "classnames";
+import Guess from "mastermind/Guess";
+import Peg from "mastermind/Peg";
+import HintHelper from "mastermind/HintHelper";
 
 export default class Row extends React.Component {
   constructor(props) {
@@ -21,13 +20,13 @@ export default class Row extends React.Component {
   guessListener = (guessIndex, color) => {
     const prevGuesses = this.state.guesses;
     prevGuesses[guessIndex] = color;
-    this.setState({guesses: prevGuesses});
+    this.setState({ guesses: prevGuesses });
   }
 
   handleSubmit = () => {
     const hintPegs = this.getHintPegs();
     this.setState({
-      hintPegs: hintPegs
+      hintPegs: hintPegs,
     });
     this.props.resolveTurn(this.isGuessCorrect());
   }
@@ -42,7 +41,7 @@ export default class Row extends React.Component {
 
     return {
       black: hintHelper.blackPegs(),
-      white: hintHelper.whitePegs()
+      white: hintHelper.whitePegs(),
     };
   }
 
@@ -51,11 +50,11 @@ export default class Row extends React.Component {
     const remainder = this.props.codeLength - (this.state.hintPegs.black + this.state.hintPegs.white);
 
     times(this.state.hintPegs.black, function(n) {
-      pegs.push(<Peg key={`black-${n}`} color='black' />);
+      pegs.push(<Peg key={`black-${n}`} color="black" />);
     });
 
     times(this.state.hintPegs.white, function(n) {
-      pegs.push(<Peg key={`white-${n}`} color='white' />);
+      pegs.push(<Peg key={`white-${n}`} color="white" />);
     });
 
     times(remainder, function(n) {
@@ -67,8 +66,8 @@ export default class Row extends React.Component {
 
   renderSubmitButton = () => {
     const buttonClasses = cx({
-      'btn': true,
-      'hidden': !this.props.currentRow || (keys(this.state.guesses).length != this.props.codeLength)
+      "btn": true,
+      "hidden": !this.props.currentRow || (keys(this.state.guesses).length != this.props.codeLength),
     });
 
     return (
@@ -81,8 +80,8 @@ export default class Row extends React.Component {
   render() {
     const guesses = [],
       rowClasses = cx({
-        'row': true,
-        'current-row': this.props.currentRow
+        "row": true,
+        "current-row": this.props.currentRow,
       });
 
     for (let i = 0; i < this.props.codeLength; i++) {
@@ -97,12 +96,12 @@ export default class Row extends React.Component {
     }
 
     return (
-      <div className={rowClasses} title={'Row ' + this.props.reactKey}>
-        <div className='pegs'>
-          <div className='peg-group'>
+      <div className={rowClasses} title={"Row " + this.props.reactKey}>
+        <div className="pegs">
+          <div className="peg-group">
             {this.renderHintPegs()}
           </div>
-          <div className='guess-group'>
+          <div className="guess-group">
             {guesses}
           </div>
         </div>

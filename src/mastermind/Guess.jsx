@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ColoredPeg from 'mastermind/ColoredPeg';
-import cx from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import ColoredPeg from "mastermind/ColoredPeg";
+import cx from "classnames";
 
 export default class Guess extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: 'blank',
+      color: "blank",
     };
   }
 
   onClick = () => {
     if (this.props.isActive) {
       const nextColor = this.nextColor();
-      this.setState({ color: nextColor});
+      this.setState({ color: nextColor });
       this.props.onClick(this.props.reactKey, nextColor);
     }
   }
@@ -36,7 +36,6 @@ export default class Guess extends React.Component {
       <ColoredPeg classes={classes} onClick={this.onClick}/>
     );
   }
-
 }
 
 Guess.propTypes = {

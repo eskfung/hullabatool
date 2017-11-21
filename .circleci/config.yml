@@ -16,4 +16,5 @@ jobs:
           key: dependency-cache-{{ arch }}-{{ .Branch}}-{{ checksum "yarn.lock" }}
           paths:
             - ./node_modules
+      - run: yarn lint
       - run: yarn test

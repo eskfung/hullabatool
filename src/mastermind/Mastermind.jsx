@@ -1,9 +1,9 @@
-import { times, sample, sampleSize, reduce } from 'lodash';
-import React from 'react';
-import Row from 'mastermind/Row';
-import AnswerRow from 'mastermind/AnswerRow';
+import { times, sample, sampleSize, reduce } from "lodash";
+import React from "react";
+import Row from "mastermind/Row";
+import AnswerRow from "mastermind/AnswerRow";
 
-const COLOR_CHOICES = ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'];
+const COLOR_CHOICES = ["red", "green", "blue", "yellow", "brown", "orange", "black", "white"];
 
 export default class Mastermind extends React.Component {
   constructor(props) {
@@ -89,7 +89,7 @@ export default class Mastermind extends React.Component {
     }
 
     return (
-      <div className='mastermind'>
+      <div className="mastermind">
         {this.renderEndgameMessage()}
         <AnswerRow answer={this.state.answer} gameOver={this.state.gameOver} />
         {rows}
