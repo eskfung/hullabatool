@@ -1,94 +1,86 @@
-import _ from 'lodash';
+import { keys, times } from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cx from 'classnames';
 import Guess from 'mastermind/Guess';
 import Peg from 'mastermind/Peg';
 import HintHelper from 'mastermind/HintHelper';
 
-export default React.createClass({
-  propTypes: {
-    answer: PropTypes.objectOf(PropTypes.string),
-    codeLength: PropTypes.number,
-    colorChoices: PropTypes.arrayOf(PropTypes.string),
-    currentRow: PropTypes.bool,
-    reactKey: PropTypes.number,
-    resolveTurn: PropTypes.func
-  },
-
-  getInitialState: function() {
-    return {
+export default class Row extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       guesses: {},
       hintPegs: {
         black: 0,
-        white: 0
-      }
+        white: 0,
+      },
     };
-  },
+  }
 
-  _guessListener: function(guessIndex, color) {
+  guessListener = (guessIndex, color) => {
     const prevGuesses = this.state.guesses;
     prevGuesses[guessIndex] = color;
     this.setState({guesses: prevGuesses});
-  },
+  }
 
-  _handleSubmit: function() {
+  handleSubmit = () => {
     const hintPegs = this.getHintPegs();
     this.setState({
       hintPegs: hintPegs
     });
     this.props.resolveTurn(this.isGuessCorrect());
-  },
+  }
 
-  isGuessCorrect: function() {
+  isGuessCorrect = () => {
     const hintHelper = new HintHelper(this.props.answer, this.state.guesses);
     return hintHelper.blackPegs() == this.props.codeLength;
-  },
+  }
 
-  getHintPegs: function() {
+  getHintPegs = () => {
     const hintHelper = new HintHelper(this.props.answer, this.state.guesses);
 
     return {
       black: hintHelper.blackPegs(),
       white: hintHelper.whitePegs()
     };
-  },
+  }
 
-  _renderHintPegs: function () {
+  renderHintPegs = () => {
     const pegs = [];
     const remainder = this.props.codeLength - (this.state.hintPegs.black + this.state.hintPegs.white);
 
-    _.times(this.state.hintPegs.black, function(n) {
-      pegs.push(<Peg key={'black-' + n} color='black' />);
+    times(this.state.hintPegs.black, function(n) {
+      pegs.push(<Peg key={`black-${n}`} color='black' />);
     });
 
-    _.times(this.state.hintPegs.white, function(n) {
-      pegs.push(<Peg key={'white-' + n} color='white' />);
+    times(this.state.hintPegs.white, function(n) {
+      pegs.push(<Peg key={`white-${n}`} color='white' />);
     });
 
-    _.times(remainder, function(n) {
-      pegs.push(<Peg key={'blank-' + n} />);
+    times(remainder, function(n) {
+      pegs.push(<Peg key={`blank-${n}`} />);
     });
 
     return pegs;
-  },
+  }
 
-  _renderSubmitButton: function() {
-    const buttonClasses = classnames({
+  renderSubmitButton = () => {
+    const buttonClasses = cx({
       'btn': true,
-      'hidden': !this.props.currentRow || (_.keys(this.state.guesses).length != this.props.codeLength)
+      'hidden': !this.props.currentRow || (keys(this.state.guesses).length != this.props.codeLength)
     });
 
     return (
-      <button className={buttonClasses} onClick={this._handleSubmit}>
+      <button className={buttonClasses} onClick={this.handleSubmit}>
         Submit
       </button>
     );
-  },
+  }
 
-  render: function () {
+  render() {
     const guesses = [],
-      rowClasses = classnames({
+      rowClasses = cx({
         'row': true,
         'current-row': this.props.currentRow
       });
@@ -99,7 +91,7 @@ export default React.createClass({
           reactKey={i}
           colorChoices={this.props.colorChoices}
           isActive={this.props.currentRow}
-          onClick={this._guessListener}
+          onClick={this.guessListener}
         />
       );
     }
@@ -108,14 +100,14 @@ export default React.createClass({
       <div className={rowClasses} title={'Row ' + this.props.reactKey}>
         <div className='pegs'>
           <div className='peg-group'>
-            {this._renderHintPegs()}
+            {this.renderHintPegs()}
           </div>
           <div className='guess-group'>
             {guesses}
           </div>
         </div>
-        {this._renderSubmitButton()}
+        {this.renderSubmitButton()}
       </div>
     );
   }
-});
+}

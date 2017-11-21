@@ -1,30 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ColoredPeg from 'mastermind/ColoredPeg';
+import cx from 'classnames';
 
-export default React.createClass({
-  propTypes: {
-    colorChoices: PropTypes.arrayOf(PropTypes.string),
-    isActive: PropTypes.bool,
-    onClick: PropTypes.func,
-    reactKey: PropTypes.number
-  },
+export default class Guess extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: 'blank',
+    };
+  }
 
-  _onClick: function () {
+  onClick = () => {
     if (this.props.isActive) {
       const nextColor = this.nextColor();
       this.setState({ color: nextColor});
       this.props.onClick(this.props.reactKey, nextColor);
     }
-  },
+  }
 
-  _classes: function () {
-    const classes = {};
-    classes['colored-peg--' + this.state.color] = true;
-    return classes;
-  },
-
-  nextColor: function () {
+  nextColor = () => {
     let index = this.props.colorChoices.indexOf(this.state.color);
     index++;
 
@@ -33,17 +28,20 @@ export default React.createClass({
     }
 
     return this.props.colorChoices[index];
-  },
+  }
 
-  getInitialState: function () {
-    return {
-      color: 'blank'
-    };
-  },
-
-  render: function () {
+  render() {
+    const classes = cx(`colored-peg--${this.state.color}`);
     return (
-      <ColoredPeg classes={this._classes()} onClick={this._onClick}/>
+      <ColoredPeg classes={classes} onClick={this.onClick}/>
     );
   }
-});
+
+}
+
+Guess.propTypes = {
+  colorChoices: PropTypes.arrayOf(PropTypes.string),
+  isActive: PropTypes.bool,
+  onClick: PropTypes.func,
+  reactKey: PropTypes.number,
+};

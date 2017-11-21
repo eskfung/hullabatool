@@ -1,25 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cx from 'classnames';
 
-export default React.createClass({
-  propTypes: {
-    classes: PropTypes.object,
-    onClick: PropTypes.func
-  },
+export default class ColoredPeg extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-  handleClick: function(e) {
-    if (this.props.onClick) {
-      return this.props.onClick.call(this, e);
-    }
-  },
+  handleClick = (event) => {
+    return this.props.onClick && this.props.onClick.call(this, event);
+  }
 
-  render: function () {
-    const classes = classnames('peg', this.props.classes);
+  render() {
+    const classes = cx('peg', this.props.classes);
 
     return (
-      <div className={classes} onClick={this.handleClick}>
-      </div>
+      <div className={classes} onClick={this.handleClick} />
     );
   }
-});
+}
+
+ColoredPeg.propTypes = {
+  classes: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  onClick: PropTypes.func,
+};

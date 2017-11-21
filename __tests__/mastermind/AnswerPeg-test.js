@@ -13,7 +13,7 @@ describe('AnswerPeg', () => {
     it('passes the unsolved class prop to its ColoredPeg', () => {
       const answerPegWrapper = shallow(<AnswerPeg gameOver={false} />);
       const coloredPeg = answerPegWrapper.find(ColoredPeg);
-      expect(coloredPeg.prop('classes')['unsolved']).toEqual(true);
+      expect(coloredPeg.prop('classes')).toEqual('unsolved');
     });
   });
 
@@ -21,13 +21,13 @@ describe('AnswerPeg', () => {
     it('does not pass the unsolved class prop to its ColoredPeg', () => {
       const answerPegWrapper = shallow(<AnswerPeg gameOver={true} />);
       const coloredPeg = answerPegWrapper.find(ColoredPeg);
-      expect(coloredPeg.prop('classes')['unsolved']).toEqual(false);
+      expect(coloredPeg.prop('classes')).not.toEqual('unsolved');
     });
 
     it('passes classes indicating the color of the peg', () => {
       const answerPegWrapper = shallow(<AnswerPeg gameOver={true} color={'foo'} />);
       const coloredPeg = answerPegWrapper.find(ColoredPeg);
-      expect(coloredPeg.prop('classes')['colored-peg--foo']).toEqual(true);
+      expect(coloredPeg.prop('classes')).toEqual('colored-peg--foo');
     });
   });
 });

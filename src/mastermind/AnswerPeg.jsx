@@ -1,28 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ColoredPeg from 'mastermind/ColoredPeg';
+import cx from 'classnames';
 
-export default React.createClass({
-  propTypes: {
-    color: PropTypes.string,
-    gameOver: PropTypes.bool
-  },
+export default class AnswerPeg extends React.Component {
+  render() {
+    const classes = cx({
+      'unsolved': !this.props.gameOver,
+      [`colored-peg--${this.props.color}`]: this.props.gameOver,
+    });
 
-  _classes: function () {
-    const classes = {
-      'unsolved': !this.props.gameOver
-    };
-
-    if (this.props.gameOver) {
-      classes['colored-peg--' + this.props.color] = true;
-    }
-
-    return classes;
-  },
-
-  render: function () {
     return (
-      <ColoredPeg classes={this._classes()} />
+      <ColoredPeg classes={classes} />
     );
   }
-});
+}
+
+AnswerPeg.propTypes = {
+  color: PropTypes.string,
+  gameOver: PropTypes.bool,
+};

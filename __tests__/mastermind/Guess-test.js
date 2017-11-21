@@ -18,7 +18,7 @@ describe('Guess', () => {
   it('passes the colored-peg--blank class prop to its ColoredPeg', () => {
     const guessWrapper = shallow(<Guess />);
     const coloredPeg = guessWrapper.find(ColoredPeg);
-    expect(coloredPeg.prop('classes')['colored-peg--blank']).toEqual(true);
+    expect(coloredPeg.prop('classes')).toEqual('colored-peg--blank');
   });
 
   describe('when the color state changes', function() {
@@ -27,7 +27,7 @@ describe('Guess', () => {
       guessWrapper.setState({'color':'lavender'});
 
       const coloredPeg = guessWrapper.find(ColoredPeg);
-      expect(coloredPeg.prop('classes')['colored-peg--lavender']).toEqual(true);
+      expect(coloredPeg.prop('classes')).toEqual('colored-peg--lavender');
     });
   });
 

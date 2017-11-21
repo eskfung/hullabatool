@@ -1,53 +1,62 @@
-import _ from 'lodash';
+import { times, sample, sampleSize, reduce } from 'lodash';
 import React from 'react';
 import Row from 'mastermind/Row';
 import AnswerRow from 'mastermind/AnswerRow';
 
-export default React.createClass({
-  getInitialState: function () {
-    return {
+const COLOR_CHOICES = ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'];
+
+export default class Mastermind extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       guessCount: 10,
-      colorChoices: ['red', 'green', 'blue', 'yellow', 'brown', 'orange', 'black', 'white'],
+      colorChoices: COLOR_CHOICES,
       codeLength: 4,
       allowDuplicates: true,
       currentRow: 1,
       gameOver: false,
-      won: false
+      won: false,
     };
-  },
+  }
 
-  componentWillMount: function () {
-    this.setState({answer: this.generateRandomAnswer()});
-  },
+  componentDidMount() {
+    this.setState({ answer: this.generateRandomAnswer() });
+  }
 
-  generateRandomAnswer: function () {
+  generateRandomAnswer = () => {
     let answerArray;
     if (this.state.allowDuplicates) {
-      answerArray = _.times(this.state.codeLength, function() { return _.sample(this.state.colorChoices);}.bind(this));
+      answerArray = times(
+        this.state.codeLength,
+        () => sample(this.state.colorChoices)
+      );
     } else {
-      answerArray = _.sampleSize(this.state.colorChoices, this.state.codeLength);
+      answerArray = sampleSize(
+        this.state.colorChoices,
+        this.state.codeLength
+      );
     }
 
     // convert array to object
-    return _.reduce(answerArray, function(obj, value, index) {
+    return reduce(answerArray, (obj, value, index) => {
       obj[index] = value;
       return obj;
     }, {});
-  },
+  }
 
-  resolveTurn: function (gameWon) {
+  resolveTurn = (gameWon) => {
     if (gameWon) {
-      this.setState({won: true, gameOver: true});
+      this.setState({ won: true, gameOver: true });
     }
 
     if (this.state.currentRow >= this.state.guessCount) {
-      this.setState({gameOver: true});
+      this.setState({ gameOver: true });
     }
 
-    this.setState({currentRow: this.state.currentRow + 1});
-  },
+    this.setState({ currentRow: this.state.currentRow + 1 });
+  }
 
-  renderEndgameMessage: function () {
+  renderEndgameMessage = () => {
     let message;
     if (this.state.gameOver) {
       if (this.state.won) {
@@ -61,9 +70,9 @@ export default React.createClass({
         {message}
       </p>
     );
-  },
+  }
 
-  render: function () {
+  render() {
     const rows = [];
     for (let i = 0; i < this.state.guessCount; i++) {
       const rowCount = this.state.guessCount - i;
@@ -84,10 +93,7 @@ export default React.createClass({
         {this.renderEndgameMessage()}
         <AnswerRow answer={this.state.answer} gameOver={this.state.gameOver} />
         {rows}
-        <pre className='debugger' style={{display:'none'}}>
-          {JSON.stringify(this.state)}
-        </pre>
       </div>
     );
   }
-});
+}

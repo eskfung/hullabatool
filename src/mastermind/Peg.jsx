@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cx from 'classnames';
 
-export default React.createClass({
-  propTypes: {
-    color: PropTypes.string
-  },
-
-  render: function () {
-    const color = this.props.color ? this.props.color : 'blank';
-    const classes = classnames('peg', 'peg-' + color);
+export default class Peg extends React.Component {
+  render() {
+    const classes = cx({
+      'peg': true,
+      [`peg-${this.props.color}`]: this.props.color,
+      'peg-blank': !this.props.color,
+    });
 
     return (
-      <div className={classes}>
-      </div>
+      <div className={classes} />
     );
   }
-});
+}
+
+Peg.propTypes = {
+  color: PropTypes.string,
+};
