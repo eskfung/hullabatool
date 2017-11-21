@@ -2,10 +2,15 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   entry: {
     app: path.resolve(__dirname, "src", "App.jsx"),
+    vendor: [
+      "lodash",
+      "react",
+    ],
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -38,6 +43,12 @@ module.exports = {
     new CleanWebpackPlugin(["dist"]),
     new HtmlWebpackPlugin({
       title: "Hullabatool",
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "vendor",
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: "runtime", // Extract Webpack boilerplate
     }),
   ],
 };
