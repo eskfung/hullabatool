@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --progress --colors --config webpack.dev.js",
     "start": "node ./bin/www",
-    "test": "mocha --compilers jsx:babel-register --recursive",
+    "test": "jest",
     "lint": "eslint --ext .js,.jsx --fix test/**/* assets/**/*",
     "watch": "webpack-dev-server --config webpack.dev.js --open",
     "heroku-postbuild": "webpack --config webpack.prod.js"
@@ -31,7 +31,6 @@
     "webpack-merge": "^4.1.1"
   },
   "devDependencies": {
-    "babel-jest": "^21.2.0",
     "enzyme": "^2.2.0",
     "eslint": "^4.10.0",
     "eslint-plugin-react": "^7.4.0",
