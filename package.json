@@ -2,6 +2,9 @@
   "name": "hullabatool",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "8.x.x"
+  },
   "scripts": {
     "build": "webpack --progress --colors --config webpack.dev.js",
     "start": "node ./bin/www",
