@@ -15,7 +15,6 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.5.0",
-    "babel-register": "^6.7.2",
     "classnames": "^2.2.3",
     "clean-webpack-plugin": "^0.1.17",
     "css-loader": "^0.28.7",
@@ -33,15 +32,10 @@
   },
   "devDependencies": {
     "babel-jest": "^21.2.0",
-    "chai": "^3.5.0",
     "enzyme": "^2.2.0",
     "eslint": "^4.10.0",
-    "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-react": "^7.4.0",
     "jest": "^21.2.1",
-    "mocha": "^3.2.0",
-    "react-addons-test-utils": "^15.1.0",
-    "sinon": "^1.17.3",
     "webpack-dev-server": "^2.9.4"
   }
 }
